@@ -1,4 +1,4 @@
-<!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
+<!-- SPDX-License-Identifier: MPL-2.0 -->
 <!-- TOPOLOGY.md — Project architecture map and completion dashboard -->
 <!-- Last updated: 2026-03-16 -->
 
@@ -14,7 +14,7 @@
                                        │
                                        ▼
                     ┌─────────────────────────────────────────────┐
-                    │            V-LANG API LAYER                  │
+                    │            zig API LAYER                  │
                     │         api/v/src/ecm_api.v                 │
                     │   Consumer-facing types + classification     │
                     └──────────────────┬──────────────────────────┘
@@ -82,7 +82,7 @@ ZIG FFI (ffi/zig/)
   Distance / Separation             █████░░░░░  50%    Ground + aerial, integer math
   Formation Computation             ███░░░░░░░  30%    Line + circle, rest TBD
 
-V-LANG API (api/v/)
+zig API (api/v/)
   ECM API                           ████░░░░░░  40%    Full type mirror, classify, recommend
   ABI Verification Types            ███░░░░░░░  30%    Round-trip proofs
 
@@ -106,7 +106,7 @@ OVERALL:                            ████░░░░░░  ~40%   v0.1 
 
 ```
            ┌─────────────────────┐
-           │   V-LANG (API)      │  Consumer-facing
+           │   zig (API)      │  Consumer-facing
            └──────────┬──────────┘
            ┌──────────┼──────────┐
            │   ZIG (FFI)         │  C-ABI bridge
@@ -129,7 +129,7 @@ IDRIS2 ABI ──defines──► ZIG FFI ──bridges──► RUST CORE
 SPARK SAFETY ◄──proves── FORMATION ──uses──► AUTONOMY
      │                                          │
      ▼                                          ▼
-EXPORT CONTROL ──────────────────────────► V-LANG API
+EXPORT CONTROL ──────────────────────────► zig API
 ```
 
 ## Update Protocol

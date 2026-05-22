@@ -1,7 +1,7 @@
--- SPDX-License-Identifier: PMPL-1.0-or-later
+-- SPDX-License-Identifier: MPL-2.0
 -- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 --
--- Types.idr — Idris2 ABI verification types for the V-lang API layer.
+-- Types.idr — Idris2 ABI verification types for the zig API layer.
 --
 -- This file mirrors src/abi/Types.idr but scoped to the V API surface.
 -- It ensures the V API types are consistent with the core ABI.

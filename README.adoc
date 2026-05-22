@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // SPDX-FileCopyrightText: 2025-2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 = Robodog ECM - Electronic Countermeasures & Defensive Technologies
@@ -55,7 +55,7 @@ Robodog ECM is a research platform for defensive technologies including:
 | Safety | **Ada/SPARK** | Formally verified safety-critical subsystems
 | ABI | **Idris2** | Dependent-type interface proofs
 | FFI | **Zig** | C-ABI bridge between ABI and core
-| API | **V-lang** | Consumer-facing API surface
+| API | **zig** | Consumer-facing API surface
 |===
 
 * **Cryptography:** Kyber1024, Dilithium5, SPHINCS+ (NIST PQC standards)
@@ -76,7 +76,7 @@ Robodog ECM is a research platform for defensive technologies including:
 - [x] SPARK safety specs (ECM, formation, autonomy)
 - [x] Idris2 ABI definitions (Types, ECM, Crypto, Formation, Foreign)
 - [x] Zig FFI bridge (classification, distance, formation)
-- [x] V-lang API (full type mirror, classification, recommendations)
+- [x] zig API (full type mirror, classification, recommendations)
 - [x] Comprehensive Trustfile (780 lines, 18 operational checks)
 
 == Export Control Compliance
@@ -112,7 +112,7 @@ See `EXPORT-CONTROL.md` for full compliance requirements.
 
 == License
 
-PMPL-1.0-or-later (Palimpsest License)
+MPL-2.0 (Palimpsest License)
 
 == Authors
 

@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: PMPL-1.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 # STATE.a2ml — Project state checkpoint
 # Updated: 2026-03-16
 
@@ -19,7 +19,7 @@ core = "Rust"
 safety = "Ada/SPARK"
 abi = "Idris2"
 ffi = "Zig"
-api = "V-lang"
+api = "zig"
 
 [v0.1-progress]
 ecm-signal-analysis = "implemented — signals, detection, FFT spectrum"

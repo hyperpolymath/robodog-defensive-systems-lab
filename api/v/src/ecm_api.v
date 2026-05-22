@@ -1,7 +1,7 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 
-// ecm_api.v — V-lang API for Robodog ECM consumers.
+// ecm_api.v — zig API for Robodog ECM consumers.
 //
 // DEFENSIVE USE ONLY — Wassenaar Cat 5A2 / Cat 11.
 // Public API surface for the Robodog ECM platform.

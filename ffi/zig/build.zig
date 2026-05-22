@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 //
 // build.zig — Zig FFI bridge for Robodog ECM (Zig 0.15.x).
@@ -10,7 +10,7 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    // Shared library for FFI consumers (Idris2, V-lang API).
+    // Shared library for FFI consumers (Idris2, zig API).
     const lib = b.addLibrary(.{
         .name = "robodog_ffi",
         .root_module = b.createModule(.{

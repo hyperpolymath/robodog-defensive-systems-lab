@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 = Robodog ECM - Electronic Countermeasures & Defensive Technologies — Show Me The Receipts
 :toc:
 :icons: font
@@ -81,7 +81,7 @@ All share: *Formal verification at boundaries, high-performance Rust inside, saf
 
 | `ffi/zig/src/main.zig` | Zig FFI bridge: C-ABI compatible runtime exposing signal classification, distance checks, formation validation. Calls into Rust implementations.
 
-| `api/v-lang/` | V-language public API: type mirrors of Idris2 ABI, query functions for classification and recommendations.
+| `api/zig/` | ziguage public API: type mirrors of Idris2 ABI, query functions for classification and recommendations.
 
 | `spark/` | Ada/SPARK safety specs: formal specifications (not proofs) of ECM, formation, and autonomy safety invariants.
 

@@ -1,4 +1,4 @@
-<!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
+<!-- SPDX-License-Identifier: MPL-2.0 -->
 <!-- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk> -->
 
 # Export Control Compliance Framework
@@ -98,7 +98,7 @@ The `hypatia-scan` workflow includes export control scanning rules that flag:
 
 ## Licensing Interaction
 
-The PMPL-1.0-or-later license does **not** override export control obligations.
+The MPL-2.0 license does **not** override export control obligations.
 Even though the source code is publicly available under an open license, users
 remain responsible for compliance with all applicable export control laws in
 their jurisdiction.
