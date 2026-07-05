@@ -1,5 +1,8 @@
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<!-- Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk> -->
+
 # Clone the repository
-git clone https://github.com/hyperpolymath/robodog-ecm.git
+git clone https://github.com/hyperpolymath/robodog-defensive-systems-lab.git
 cd robodog-ecm
 
 # Using Nix (recommended for reproducibility)
@@ -86,10 +89,10 @@ Use the [feature request template](.github/ISSUE_TEMPLATE/feature_request.md) an
 
 Look for issues labelled:
 
-- [`good first issue`](https://github.com/hyperpolymath/robodog-ecm/labels/good%20first%20issue) — Simple Perimeter 3 tasks
-- [`help wanted`](https://github.com/hyperpolymath/robodog-ecm/labels/help%20wanted) — Community help needed
-- [`documentation`](https://github.com/hyperpolymath/robodog-ecm/labels/documentation) — Docs improvements
-- [`perimeter-3`](https://github.com/hyperpolymath/robodog-ecm/labels/perimeter-3) — Community sandbox scope
+- [`good first issue`](https://github.com/hyperpolymath/robodog-defensive-systems-lab/labels/good%20first%20issue) — Simple Perimeter 3 tasks
+- [`help wanted`](https://github.com/hyperpolymath/robodog-defensive-systems-lab/labels/help%20wanted) — Community help needed
+- [`documentation`](https://github.com/hyperpolymath/robodog-defensive-systems-lab/labels/documentation) — Docs improvements
+- [`perimeter-3`](https://github.com/hyperpolymath/robodog-defensive-systems-lab/labels/perimeter-3) — Community sandbox scope
 
 ---
 

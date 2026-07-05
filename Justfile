@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MPL-2.0
-# justfile — Build recipes for Robodog ECM
+# justfile — Build recipes for robodog-ecm
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 
 # Default recipe — list all available commands.
@@ -31,7 +31,7 @@ test-rust:
 test-zig:
     cd ffi/zig && zig build test
 
-# Run Trustfile operational checks.
+# Run Trustfile repository checks.
 test-trust:
     bash contractiles/trust/run-checks.sh
 
@@ -120,7 +120,7 @@ doctor:
 
 # Auto-repair common issues
 heal:
-    @echo "Attempting auto-repair for robodog-ecm..."
+    @echo "Attempting auto-repair for robodog-defensive-systems-lab..."
     @echo "Fixing permissions..."
     @find . -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
     @echo "Cleaning stale caches..."
@@ -129,7 +129,7 @@ heal:
 
 # Guided tour of key features
 tour:
-    @echo "=== robodog-ecm Tour ==="
+    @echo "=== robodog-defensive-systems-lab Tour ==="
     @echo ""
     @echo "1. Project structure:"
     @ls -la
@@ -144,12 +144,12 @@ tour:
 
 # Open feedback channel with diagnostic context
 help-me:
-    @echo "=== robodog-ecm Help ==="
+    @echo "=== robodog-defensive-systems-lab Help ==="
     @echo "Platform: $(uname -s) $(uname -m)"
     @echo "Shell: $SHELL"
     @echo ""
     @echo "To report an issue:"
-    @echo "  https://github.com/hyperpolymath/robodog-ecm/issues/new"
+    @echo "  https://github.com/hyperpolymath/robodog-defensive-systems-lab/issues/new"
     @echo ""
     @echo "Include the output of 'just doctor' in your report."
 
