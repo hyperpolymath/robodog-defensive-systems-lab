@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MPL-2.0
-# Mustfile — Mandatory invariants for Robodog ECM
+# Mustfile — Mandatory invariants for robodog-defensive-systems-lab
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 
 version: 1
@@ -7,11 +7,11 @@ version: 1
 metadata:
   name: robodog-ecm-state-contract
   spec: v0.1.0
-  description: "Invariant checks for the Robodog ECM defensive technologies platform."
+  description: "Invariant checks for the robodog-defensive-systems-lab defensive research repository."
 
 checks:
   - name: trustfile-passes
-    description: "All Trustfile operational checks must pass (zero critical failures)."
+    description: "All Trustfile repository checks must pass (zero critical failures)."
     run: "bash contractiles/trust/run-checks.sh"
 
   - name: rust-compiles
@@ -40,4 +40,4 @@ checks:
 
   - name: spdx-on-source
     description: "All source files have SPDX license headers."
-    run: "! find src/ api/ ffi/ -type f \\( -name '*.rs' -o -name '*.v' -o -name '*.idr' -o -name '*.ads' -o -name '*.adb' -o -name '*.zig' \\) | xargs grep -L 'SPDX-License-Identifier' 2>/dev/null | head -1 | grep -q ."
+    run: "! find src/abi src/spark/src src/rust/src src/rust/tests src/rust/benches ffi/zig/src ffi/zig/test -type f 2>/dev/null | grep -E '[.](rs|v|idr|ads|adb|zig)$' | xargs grep -L 'SPDX-License-Identifier' 2>/dev/null | head -1 | grep -q ."
