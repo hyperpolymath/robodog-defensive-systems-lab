@@ -80,7 +80,7 @@ layers = ["base", "toolchain", "build"]
 env = { LOG_LEVEL = "debug" }
 
 [targets.production]
-description = "Production deployment"
+description = "Production-style package profile"
 layers = ["runtime"]
 env = { LOG_LEVEL = "info" }
 

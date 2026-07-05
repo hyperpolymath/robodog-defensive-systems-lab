@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: MPL-2.0
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
-# End-to-end and integration tests for robodog-ecm.
-# Tests SAR mission simulation, ECM attack, comms loss, signal analysis,
-# and post-quantum cryptographic channel establishment.
+# End-to-end and integration tests for robodog-defensive-systems-lab.
+# Tests synthetic mission simulation, communications-degradation resilience,
+# synthetic signal analysis, and cryptographic channel establishment.
 
 name: E2E + Integration Tests
 
@@ -29,7 +29,7 @@ concurrency:
 
 jobs:
   e2e:
-    name: E2E — SAR Mission + ECM + Crypto
+    name: E2E - Simulation + Resilience + Crypto
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -50,5 +50,5 @@ jobs:
         run: cargo test --test end_to_end -- --nocapture
         working-directory: src/rust
 
-      - name: Run benchmarks (if present)
-        run: cargo bench --workspace 2>/dev/null || echo "No benchmarks configured yet"
+      - name: Compile benchmarks (if present)
+        run: cargo bench --workspace --no-run 2>/dev/null || echo "No benchmarks configured yet"

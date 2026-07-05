@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+// Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 //! Signal type definitions for ECM analysis.
 //!
-//! DEFENSIVE USE ONLY — signal models for spectrum monitoring and
-//! interference classification. No offensive jamming capability.
+//! DEFENSIVE USE ONLY — synthetic signal models for spectrum-awareness and
+//! interference classification. No offensive interference capability.
 
 use serde::{Deserialize, Serialize};
 
@@ -43,7 +44,7 @@ pub enum SignalClassification {
     Neutral,
     /// Potential interference source (unintentional).
     Interference,
-    /// Suspected hostile jamming (intentional disruption).
+    /// Suspected intentional disruption in a synthetic scenario.
     SuspectedJamming,
 }
 
@@ -97,7 +98,7 @@ impl SpectrumSnapshot {
             .count()
     }
 
-    /// Return true if any suspected jamming is present.
+    /// Return true if any suspected intentional disruption is present.
     #[must_use]
     pub fn has_jamming(&self) -> bool {
         self.count_by_class(SignalClassification::SuspectedJamming) > 0

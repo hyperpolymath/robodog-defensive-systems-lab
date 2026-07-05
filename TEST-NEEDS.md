@@ -1,4 +1,10 @@
-# CRG C Test Coverage Report — Robodog ECM
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<!-- Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk> -->
+
+# CRG C Test Coverage Report — robodog-defensive-systems-lab
+
+Publication boundary: this report describes synthetic, non-operational tests for
+defensive spectrum-awareness, secure coordination, and autonomy-safety research.
 
 ## CRG Grade: C — ACHIEVED 2026-04-04
 
@@ -35,17 +41,17 @@ CRG C requires comprehensive test coverage across all dimensions:
 - **Profile.release optimized** (LTO enabled, 1 codegen unit)
 
 ### ✅ Property-Based Tests (proptest)
-- **Signal value ranges** — Frequencies, bandwidths, SNR all bounded
+- **Signal value ranges** — Synthetic frequencies, bandwidths, SNR all bounded
 - **Deterministic classification** — Same signal always yields same classification
 - **Formation positioning** — Correct agent count, non-NaN coordinates
-- **Crypto reversibility** — Kyber1024 encap/decap and Dilithium5/SPHINCS+ sign/verify
+- **Crypto reversibility** — ML-KEM encapsulation/decapsulation and ML-DSA/SLH-DSA sign/verify wrappers
 - **Position geometry** — Distance non-negative, triangle inequality holds
 - **Autonomy decisions** — Always produce valid DefensiveAction variants
 - **Separation checks** — Commutative, symmetric, no self-violations
 
 ### ✅ E2E Tests (5 scenarios)
 - **SAR mission with clear spectrum** — Full crypto + formation + autonomy pipeline
-- **Formation under ECM attack** — Jammer detection → classification → human control
+- **Formation under synthetic interference** — Anomaly classification → human review
 - **Communication loss** — Triggers safe-state transition
 - **Signal analysis pipeline** — Synthetic signal → FFT → peak detection
 - **Crypto fallback** — Primary (Kyber1024 + Dilithium5) + SPHINCS+ backup
@@ -61,7 +67,7 @@ CRG C requires comprehensive test coverage across all dimensions:
 - **Pre-conditions** — Agents provided, thresholds valid
 - **Post-conditions** — Valid outputs only (no panics, no invalid states)
 - **Parameter consistency** — Safety params, detection thresholds internally valid
-- **Signal spectrum** — Count methods agree, jamming detection reliable
+- **Signal spectrum** — Count methods agree, anomaly classification is consistent
 - **Crypto key sizes** — Kyber public/secret keys have reasonable byte lengths
 
 ### ✅ Aspect Tests (15 tests)
@@ -75,13 +81,13 @@ CRG C requires comprehensive test coverage across all dimensions:
 **Signal Processing:**
 - `signal_generate_iq_4096` — IQ sample generation
 - `power_spectrum_4096` — FFT spectrum analysis
-- `signal_classification` — Rule-based threat detection
+- `signal_classification` — Rule-based non-operational anomaly classification
 
 **Cryptography:**
-- `kyber1024_keygen` — Post-quantum key generation
-- `kyber1024_encap` — Key encapsulation
-- `kyber1024_decap` — Decapsulation
-- `dilithium5_sign` — Digital signature generation
+- `kyber1024_keygen` — ML-KEM-family key generation wrapper
+- `kyber1024_encap` — ML-KEM-family key encapsulation wrapper
+- `kyber1024_decap` — ML-KEM-family decapsulation wrapper
+- `dilithium5_sign` — ML-DSA-family digital signature wrapper
 
 **Formation & Autonomy:**
 - `position_distance` — 3D distance calculation
@@ -156,7 +162,7 @@ cargo bench --manifest-path src/rust/Cargo.toml
 | Aspect tests | ✅ 15 cross-cutting concern tests |
 | Benchmarks | ✅ 12 criterion baselines established |
 
-**Conclusion: ROBODOG-ECM ACHIEVES CRG C GRADE**
+**Conclusion: robodog-defensive-systems-lab achieves CRG C grade for synthetic, bounded research tests.**
 
 ---
 

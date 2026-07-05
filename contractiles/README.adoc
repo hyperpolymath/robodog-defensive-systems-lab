@@ -1,8 +1,12 @@
-= Robodog ECM — Contractiles
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+
+= robodog-defensive-systems-lab — Contractiles
 :toc:
 :sectnums:
 
-Operational contracts for the Robodog ECM defensive technologies platform.
+Publication-safety, trust-boundary, and repository-policy contracts for the
+robodog-defensive-systems-lab defensive research repository.
 
 == Contract Types
 
@@ -13,15 +17,15 @@ Operational contracts for the Robodog ECM defensive technologies platform.
 | **Must** | `must/Mustfile` | Mandatory invariants — build, test, lint, export control, SPDX headers
 | **Trust** | `trust/Trustfile.a2ml` | Integrity verification — secrets, provenance, crypto, export control, formal verification (780 lines, 18 checks)
 | **Dust** | `dust/Dustfile` | Recovery and rollback — key compromise, safety violations, ABI drift, container rollback
-| **Lust** | `lust/Intentfile` | Future intent — v0.2/v0.3 roadmap for ECM, crypto, formation, containers
-| **K9** | `k9/*.k9.ncl` | Nickel-based deployment and validation specs at Kennel/Yard/Hunt trust levels
+| **Lust** | `lust/Intentfile` | Future intent — v0.2/v0.3 roadmap for synthetic modelling, crypto, formation, and container packaging
+| **K9** | `k9/*.k9.ncl` | Nickel-based package and validation specs at Kennel/Yard/Hunt trust levels
 |===
 
 == Execution
 
 [source,bash]
 ----
-# Run all Trustfile operational checks
+# Run all Trustfile repository checks
 bash contractiles/trust/run-checks.sh
 
 # Run Mustfile invariants (via Justfile)

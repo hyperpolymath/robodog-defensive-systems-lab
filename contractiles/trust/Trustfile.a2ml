@@ -1,13 +1,13 @@
 # SPDX-License-Identifier: MPL-2.0
 # =============================================================================
-# Trustfile.a2ml — Robodog ECM: Electronic Countermeasures & Defensive Technologies
-# Comprehensive trust contract for dual-use defensive research platform.
+# Trustfile.a2ml — robodog-defensive-systems-lab: Defensive Spectrum-Awareness and Autonomy Safety
+# Trust contract for a non-operational defensive research repository.
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 # =============================================================================
 
 ---
 ### [META]
-id: "did:web:github.com:hyperpolymath:robodog-ecm"
+id: "did:web:github.com:hyperpolymath:robodog-defensive-systems-lab"
 version: "0.1.0"
 context:
   - "https://a2ml.org/ns/v2"
@@ -30,7 +30,7 @@ meta:
       -----BEGIN HYBRID SIGNATURE-----
       BASE64_Ed448+Dilithium5_SIGNATURE_OF_THIS_FILE
       -----END HYBRID SIGNATURE-----
-    signedBy: "did:web:github.com:hyperpolymath:robodog-ecm#primary-sig"
+    signedBy: "did:web:github.com:hyperpolymath:robodog-defensive-systems-lab#primary-sig"
     proof: "src/abi/Proofs/Trustfile.idr"
   fallbackSignature:
     algorithm: "SPHINCS+"
@@ -42,9 +42,9 @@ meta:
     sha3-512: "HEX_SHA3_512_OF_THIS_FILE"
     shake256: "BASE32_SHAKE256_OF_THIS_FILE"
   ci_cd:
-    github_actions: "https://github.com/hyperpolymath/robodog-ecm/blob/main/.github/workflows/trustfile.yml"
+    github_actions: "https://github.com/hyperpolymath/robodog-defensive-systems-lab/blob/main/.github/workflows/trustfile.yml"
     gitbot_fleet: "https://gitbot-fleet.hyperpolymath.dev/hooks/trustfile"
-    hypatia_scan: "https://hypatia.scans/repos/robodog-ecm"
+    hypatia_scan: "https://hypatia.scans/repos/robodog-defensive-systems-lab"
   automation:
     hashing: ["SHA3-512", "SHAKE256", "BLAKE3"]
     diffing: "alert-on-unexpected-changes"
@@ -53,10 +53,10 @@ meta:
 ---
 ### [EXPORT_CONTROL]
 overview: |
-  This project contains dual-use defensive technologies subject to export
-  control regulations. All technology development is constrained to defensive
-  applications only. Offensive capabilities are structurally excluded by
-  formal verification (Idris2 dependent types + SPARK proofs).
+  This project contains dual-use defensive research artifacts that may be
+  subject to export control regulations. Public artifacts are constrained to
+  synthetic simulation, resilience testing, secure coordination, formation
+  safety, safe-state behaviour, and interface safety boundaries.
 
 classification:
   primary_framework: "UK Export Control Act 2002"
@@ -68,36 +68,38 @@ classification:
       description: "Information Security — Cryptographic systems"
       components: ["src/rust/src/crypto/", "src/abi/Crypto.idr"]
       notes: |
-        Post-quantum cryptographic implementations (Kyber1024, Dilithium5,
-        SPHINCS+) for secure autonomous system communications. Open-source
-        publication may qualify for research/public domain exemptions under
-        Wassenaar Note 3 to Category 5 Part 2.
+        Post-quantum cryptographic research involving ML-KEM, ML-DSA, and
+        SLH-DSA families derived from the Kyber, Dilithium, and SPHINCS+
+        submissions. Open-source publication may qualify for research/public
+        domain exemptions under Wassenaar Note 3 to Category 5 Part 2.
     - id: "11"
-      description: "Military Electronics"
+      description: "Restricted electronics compliance context"
       components: ["src/rust/src/ecm/", "src/rust/src/formation/", "src/rust/src/autonomy/", "src/spark/"]
       notes: |
-        ECM signal analysis, formation control, and defensive autonomy.
-        Limited to defensive countermeasures (jamming detection, spectrum
-        monitoring, collision avoidance). No targeting or offensive systems.
+        Synthetic spectrum-awareness, formation-safety checks, and safe-state
+        autonomy boundaries. Limited to defensive simulation, interference
+        classification, resilience testing, and safety documentation. No
+        target-selection, surveillance, weapon-control, or offensive systems.
 
 defensive_only_policy:
   permitted:
-    - "Defensive electronic countermeasures (communications protection)"
+    - "Synthetic signal-environment modelling"
+    - "Communications-degradation resilience testing"
     - "Search and rescue multi-robot coordination"
     - "Post-quantum secure communications research"
-    - "Civilian infrastructure spectrum monitoring"
+    - "Civilian infrastructure resilience research"
     - "Academic research (published, peer-reviewed)"
   prohibited:
-    - "Offensive weapons systems or targeting"
-    - "Mass surveillance or individual tracking"
-    - "Offensive signal jamming (disrupting civilian/emergency comms)"
+    - "Weapons systems, weapon-control, payload-control, or target acquisition"
+    - "Surveillance, tracking, profiling, or target-selection workflows"
+    - "Unlawful interference with communications"
     - "Autonomous lethal decision-making"
     - "Export to embargoed/sanctioned entities"
   enforcement:
     source_level: "DEFENSIVE USE ONLY annotation required on all controlled modules"
     ci_cd: "hypatia-scan offensive-terminology check on every push"
     formal: "Idris2 types structurally exclude offensive capability construction"
-    build: "Trustfile verification mandatory before any build or deployment"
+    build: "Trustfile verification mandatory before any package release"
 
 contributor_requirements:
   acknowledgment: "Export-Control-Acknowledged: yes (in first commit message)"
@@ -114,9 +116,9 @@ security:
 ---
 ### [THREAT_MODEL]
 overview: |
-  Threat model for a defensive ECM research platform. Primary threats are
-  supply chain compromise, signal interception of research outputs, and
-  misuse of dual-use technology. Standard web threats (DDoS, XSS) are
+  Threat model for a non-operational defensive research repository. Primary
+  risks are supply-chain compromise, leakage of restricted research artifacts,
+  and misuse of dual-use technology. Standard web threats (DDoS, XSS) are
   secondary — this is primarily a local-build research codebase.
 
 adversaries:
@@ -131,7 +133,7 @@ adversaries:
       - "SPARK proofs → Formal verification of safety-critical code paths."
 
   - type: "Quantum Adversary"
-    description: "Nation-state with quantum computing capability targeting crypto protocols"
+    description: "Nation-state with quantum computing capability focused on crypto protocols"
     mitigations:
       - "Kyber1024 + Dilithium5 → PQ-resistant key exchange and signatures."
       - "SPHINCS+ fallback → Hash-based signature crypto agility."
@@ -175,7 +177,7 @@ adversaries:
 ---
 ### [FORMAL_VERIFICATION]
 overview: |
-  Robodog ECM uses a two-tier formal verification strategy:
+  robodog-defensive-systems-lab uses a two-tier formal verification strategy:
   1. Idris2 dependent types for ABI correctness (interface-level proofs)
   2. SPARK/Ada for safety-critical runtime code (implementation-level proofs)
   This combination ensures that both the protocol contracts AND the
@@ -236,7 +238,7 @@ spark:
 
 ---
 ### [TRUSTFILE_KEYS]
-issuer: "did:web:github.com:hyperpolymath:robodog-ecm"
+issuer: "did:web:github.com:hyperpolymath:robodog-defensive-systems-lab"
 keys:
   - id: "#primary-sig"
     type: "HybridKey2024"
@@ -415,10 +417,10 @@ deployment:
   spec_file: "container/deploy.k9.ncl"
   trust_level: "Hunt"
   description: |
-    k9-svc deployment at Hunt trust level. Full pedigree
+    Package-release validation at Hunt trust level. Full pedigree
     (L1-L5: identity, target, security, validation, recipes).
-    Requires cryptographic handshake before execution.
-    Export control metadata checked before deployment.
+    Requires cryptographic handshake before release.
+    Export control metadata checked before release.
   security:
     proof: "src/abi/Proofs/ContainerDeployment.idr"
     ci_cd: "validate-k9-pedigree-on-push"
@@ -426,9 +428,9 @@ deployment:
 ---
 ### [SPECTRUM_SECURITY]
 overview: |
-  ECM-specific security controls for signal analysis and spectrum
-  management. All spectrum operations are simulation-only — no raw
-  RF captures are stored in this repository.
+  Defensive spectrum-awareness controls for synthetic signal analysis and
+  resilience simulation. All spectrum operations are simulation-only — no
+  raw RF captures are stored in this repository.
 
 simulation_only:
   policy: "No real RF spectrum data in repository. Simulation models only."
@@ -442,10 +444,10 @@ signal_types:
   - name: "Narrowband Interference"
     classification: "Uncontrolled (defensive analysis)"
     module: "src/rust/src/ecm/signals.rs"
-  - name: "Wideband Jamming Patterns"
-    classification: "Wassenaar Cat 11 (defensive countermeasure)"
-    module: "src/rust/src/ecm/jamming.rs"
-  - name: "Frequency Hopping Detection"
+  - name: "Wideband Synthetic Interference Patterns"
+    classification: "Wassenaar Cat 11 review context (defensive simulation)"
+    module: "src/rust/src/ecm/detection.rs"
+  - name: "Frequency-Hopping Pattern Classification"
     classification: "Wassenaar Cat 5A2 / Cat 11"
     module: "src/rust/src/ecm/detection.rs"
 
@@ -456,11 +458,11 @@ frequency_policy:
     - range: "30-300 MHz (VHF)"
       notes: "Formation communication simulation"
     - range: "300 MHz-3 GHz (UHF)"
-      notes: "General purpose ECM simulation"
+      notes: "General purpose synthetic spectrum simulation"
     - range: "3-30 GHz (SHF)"
-      notes: "Radar countermeasure simulation"
+      notes: "High-frequency synthetic propagation models"
   prohibited_real_captures:
-    - "Military bands (unless explicitly authorised)"
+    - "Restricted bands unless explicitly authorised after legal review"
     - "Emergency services frequencies"
     - "Satellite downlink bands"
     - "Any band requiring Ofcom licence for passive monitoring"
@@ -512,7 +514,7 @@ safety_invariants:
 
 human_control:
   policy: "Human-on-the-loop minimum. Human-in-the-loop for any action affecting other agents."
-  override: "Physical kill switch required for any hardware deployment."
+  override: "Hardware-facing work requires separate safety, legal, and export-control review before public inclusion."
   audit: "All autonomous decisions logged with full decision chain."
 
 security:
@@ -522,7 +524,7 @@ security:
 ---
 ### [CI_CD]
 github_actions:
-  name: "Robodog ECM CI"
+  name: "robodog-defensive-systems-lab CI"
   on: ["push", "pull_request"]
   jobs:
     trustfile_verify:
@@ -627,7 +629,8 @@ integrity:
 
 ---
 ### [OPERATIONAL_CHECKS]
-# These are the executable verification checks run by the Trustfile.
+# Historical tooling section name retained for parser compatibility.
+# These are repository-safety verification checks, not operational deployment guidance.
 # Each check is a shell command that returns 0 on success, non-zero on failure.
 
 # ── Secrets ──────────────────────────────────────────────────────────────────
@@ -655,13 +658,13 @@ integrity:
 - severity: warning
 
 ### license-content
-- description: LICENSE contains PMPL identifier
-- run: grep -q 'PMPL' LICENSE
+- description: LICENSE contains Mozilla Public License Version 2.0 text
+- run: grep -q 'Mozilla Public License Version 2.0' LICENSE
 - severity: warning
 
 ### spdx-headers-present
 - description: All source files have SPDX headers
-- run: "! find src/ api/ ffi/ -type f \\( -name '*.rs' -o -name '*.v' -o -name '*.idr' -o -name '*.ads' -o -name '*.adb' -o -name '*.zig' \\) 2>/dev/null | xargs grep -L 'SPDX-License-Identifier' 2>/dev/null | head -1 | grep -q ."
+- run: "! find src/abi src/spark/src src/rust/src src/rust/tests src/rust/benches ffi/zig/src ffi/zig/test -type f 2>/dev/null | grep -E '[.](rs|v|idr|ads|adb|zig)$' | xargs grep -L 'SPDX-License-Identifier' 2>/dev/null | head -1 | grep -q ."
 - severity: warning
 
 # ── Export Control ────────────────────────────────────────────────────────────
@@ -742,7 +745,7 @@ primary:
     -----BEGIN HYBRID SIGNATURE-----
     BASE64_Ed448+Dilithium5_SIGNATURE_OF_THIS_FILE
     -----END HYBRID SIGNATURE-----
-  signedBy: "did:web:github.com:hyperpolymath:robodog-ecm#primary-sig"
+  signedBy: "did:web:github.com:hyperpolymath:robodog-defensive-systems-lab#primary-sig"
   proof: "src/abi/Proofs/Signature.idr"
 fallback:
   algorithm: "SPHINCS+"
@@ -753,7 +756,7 @@ fallback:
   proof: "src/abi/Proofs/SignatureFallback.idr"
 
 ---
-### [DEPLOYMENT]
+### [PUBLICATION_RELEASE]
 1. Replace all `BASE64_*` and `HEX_*` placeholders with real values.
 2. Generate Idris2 proofs:
    ```bash
@@ -772,7 +775,7 @@ fallback:
    sha3sum -a 512 contractiles/trust/Trustfile.a2ml
    shake256sum contractiles/trust/Trustfile.a2ml
    ```
-6. Verify all operational checks pass:
+6. Verify all repository checks pass:
    ```bash
    bash contractiles/trust/run-checks.sh
    ```
