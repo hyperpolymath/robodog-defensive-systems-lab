@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+// Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 //
-// integration_test.zig — Integration tests for the Robodog ECM FFI bridge.
+// integration_test.zig — Integration tests for the robodog-ecm FFI bridge.
 //
 // These tests verify that the FFI functions produce results consistent
 // with the SPARK safety proofs and Idris2 ABI type constraints.
@@ -10,7 +11,7 @@ const std = @import("std");
 const main = @import("main");
 
 test "classification agrees across all frequency bands" {
-    // A CW jammer should be classified the same regardless of band.
+    // A synthetic CW anomaly should be classified the same regardless of band.
     const bands = [_]u64{ 15_000_000, 150_000_000, 1_500_000_000, 15_000_000_000 };
     for (bands) |freq| {
         const result = main.robodog_classify_signal(freq, 50_000_000, 3000, 0);

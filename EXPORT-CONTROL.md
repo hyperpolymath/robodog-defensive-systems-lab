@@ -1,15 +1,25 @@
 <!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<!-- Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk> -->
 <!-- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk> -->
 
-# Export Control Compliance Framework
+# Export Control and Publication-Safety Notice
+
+This repository is published as a non-operational defensive research repository.
+It is limited to synthetic simulation, communications-resilience experiments,
+secure coordination research, formation-safety checks, safe-state behaviour, and
+formal/interface safety boundaries.
+
+Hardware-facing, RF-facing, field-test, or deployment-oriented work is outside
+the public repository boundary unless separately reviewed for safety, legality,
+and export-control compliance.
 
 ## Classification
 
-This repository contains **dual-use defensive technologies** that may be
-subject to export control regulations including:
+This repository contains research artifacts that may be dual-use and may be
+subject to export control regulations, including:
 
 - **UK Export Control Act 2002** and Strategic Export Control Lists
-- **Wassenaar Arrangement** Category 5 (Information Security) and Category 11 (Military Electronics)
+- **Wassenaar Arrangement** Category 5 (Information Security) and, for compliance review only, Category 11 contexts involving restricted electronics
 - **US ITAR** (International Traffic in Arms Regulations) — for reference only; UK law governs
 - **US EAR** (Export Administration Regulations) — for reference only; UK law governs
 
@@ -17,28 +27,31 @@ subject to export control regulations including:
 
 | Category | Description | Control Status |
 |----------|-------------|----------------|
-| ECM Signal Analysis | Spectrum analysis, interference detection | Dual-use (Wassenaar Cat 5) |
-| Post-Quantum Cryptography | Kyber, Dilithium, SPHINCS+ protocols | Potentially controlled (Cat 5A2) |
-| Formation Control | Distributed coordination for robotic systems | Dual-use (Cat 11) |
-| Autonomous Navigation | Collision avoidance, threat response | Dual-use (Cat 11) |
+| Defensive spectrum-awareness | Synthetic signal-environment modelling and interference classification | Dual-use review required |
+| Post-quantum cryptography | ML-KEM, ML-DSA, and SLH-DSA protocol experiments | Potentially controlled (Cat 5A2) |
+| Formation-safety checks | Distributed coordination safety for robotic systems | Dual-use review required |
+| Autonomy safety | Collision avoidance, communication-loss handling, and safe-state behaviour | Dual-use review required |
 
-## Defensive Use Only Policy
+## Defensive Use and Publication Boundary
 
 ### Permitted Uses
 
-1. **Defensive electronic countermeasures** — protecting communications from interception
-2. **Search and rescue coordination** — multi-robot disaster response
+1. **Synthetic signal-environment modelling** — simulation-only research data
+2. **Communications resilience** — degradation testing for authorised systems
 3. **Secure communications research** — post-quantum protocol design and analysis
-4. **Academic research** — published, peer-reviewed defensive technology studies
-5. **Civilian infrastructure protection** — spectrum monitoring and anomaly detection
+4. **Formation-safety analysis** — separation checks and bounded coordination
+5. **Safe-state research** — communication-loss and fault-response boundaries
+6. **Civil resilience research** — search-and-rescue and disaster-response coordination in lawful, authorised settings
+7. **Academic research** — published defensive safety and resilience studies
 
 ### Explicitly Prohibited Uses
 
-1. **Offensive weapons systems** — targeting, kill chains, lethal autonomy
-2. **Mass surveillance** — tracking, profiling, or monitoring individuals
-3. **Offensive signal jamming** — disrupting civilian or emergency communications
-4. **Autonomous lethal decision-making** — any system that decides to use force
+1. **Weapons development** — weapon-control, payload-control, target acquisition, kill chains, or lethal autonomy
+2. **Surveillance or tracking of individuals** — profiling, monitoring, or target-selection workflows
+3. **Unlawful interference with communications** — including real-world jamming or disruption of civilian, emergency, or unauthorised systems
+4. **Offensive autonomous behaviour** — evasion, intrusion, or systems that decide to use force
 5. **Export to embargoed or sanctioned entities** — per UK/EU/UN sanctions lists
+6. **Deployment by restricted or unlawful end users**
 
 ## Contributor Requirements
 
@@ -56,17 +69,17 @@ All contributors must:
    - EU Consolidated Sanctions List
    - UN Security Council Sanctions Committees lists
 
-3. **Ensure** their contributions serve exclusively defensive purposes
+3. **Ensure** their contributions stay within the repository publication boundary
 
 ### Code Review Requirements
 
 All pull requests involving the following must receive explicit export control review:
 
 - New cryptographic algorithm implementations
-- Signal processing or spectrum analysis modules
-- Autonomous decision-making logic
+- Signal processing, synthetic spectrum-awareness, or anomaly-classification modules
+- Autonomous safety or safe-state logic
 - Formation control or swarm coordination protocols
-- Any hardware interface code (SDR, sensors, actuators)
+- Any hardware-facing, RF-facing, field-test, or deployment-oriented work
 
 ## Technical Controls
 
@@ -75,7 +88,7 @@ All pull requests involving the following must receive explicit export control r
 All modules that handle controlled technology must include the annotation:
 
 ```rust
-//! DEFENSIVE USE ONLY — Electronic countermeasures for protective applications.
+//! DEFENSIVE USE ONLY — spectrum-awareness and resilience research.
 //! Export control classification: Wassenaar Category [X], UK ML [Y].
 //! See EXPORT-CONTROL.md for compliance requirements.
 ```
