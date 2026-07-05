@@ -1,14 +1,19 @@
-// SPDX-License-Identifier: MPL-2.0
-// Template: QUICKSTART-MAINTAINER.adoc — packaging, deploying, and maintaining
-// Replace robodog-ecm, {{PACKAGE_NAME}}, {{DEPS}} with actuals
-= robodog-ecm — Quick Start for Platform Maintainers
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+// Template: QUICKSTART-MAINTAINER.adoc — packaging, installing, and maintaining
+// Replace robodog-defensive-systems-lab, {{PACKAGE_NAME}}, {{DEPS}} with actuals
+= robodog-defensive-systems-lab — Quick Start for Platform Maintainers
 :toc:
 :toclevels: 2
 
 == Overview
 
-This guide covers packaging, deploying, and maintaining robodog-ecm for
-distribution on your platform.
+This guide covers packaging, local installation, verification, and maintenance
+for robodog-defensive-systems-lab distribution on your platform.
+
+This is not field-deployment guidance. Any hardware-facing, RF-facing,
+field-test, or restricted-end-user use requires separate safety, legal, and
+export-control review before inclusion in the public repository.
 
 == Runtime Dependencies
 
@@ -18,8 +23,8 @@ distribution on your platform.
 
 [source,bash]
 ----
-git clone https://github.com/hyperpolymath/robodog-ecm.git
-cd robodog-ecm
+git clone https://github.com/hyperpolymath/robodog-defensive-systems-lab.git
+cd robodog-defensive-systems-lab
 just build-release
 ----
 
@@ -111,9 +116,9 @@ Or via OPSM: `opsm update {{PACKAGE_NAME}}`
 * `panic-attacker` scan results: link:INSTALL-SECURITY-REPORT.adoc[]
 * OpenSSF Scorecard: see badge in README
 
-== Multi-Instance Deployment
+== Multi-Instance Installation Layout
 
-For deploying multiple instances (e.g., different users or tenants):
+For installing multiple isolated instances (e.g., different users or tenants):
 
 [source,bash]
 ----
@@ -125,5 +130,5 @@ Each instance has isolated config, data, and logs.
 
 == Reporting Issues
 
-* Upstream: https://github.com/hyperpolymath/robodog-ecm/issues
+* Upstream: https://github.com/hyperpolymath/robodog-defensive-systems-lab/issues
 * With diagnostic: `just help-me` (pre-fills context)

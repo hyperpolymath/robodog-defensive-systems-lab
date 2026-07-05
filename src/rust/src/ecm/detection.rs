@@ -1,17 +1,18 @@
 // SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+// Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 //! Interference detection and signal classification.
 //!
-//! DEFENSIVE USE ONLY — detects jamming and interference to protect
-//! friendly communications. No offensive jamming capability.
+//! DEFENSIVE USE ONLY — classifies synthetic interference and communications
+//! degradation for resilience research. No offensive interference capability.
 
 use super::signals::{DetectedSignal, Modulation, SignalClassification};
 
 /// Thresholds for interference classification.
 ///
 /// These parameters control when a detected signal is classified
-/// as interference or suspected jamming versus normal traffic.
+/// as interference or suspected intentional disruption versus normal traffic.
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub struct DetectionThresholds {
     /// SNR threshold above noise floor (dB) to flag as interference.
@@ -19,7 +20,7 @@ pub struct DetectionThresholds {
     pub interference_snr_db: f64,
 
     /// Bandwidth threshold (Hz). Wideband signals exceeding this
-    /// are flagged as potential jamming (legitimate signals are narrower).
+    /// are flagged as potential anomalies (legitimate signals are narrower).
     pub wideband_threshold_hz: f64,
 
     /// Maximum expected signal bandwidth (Hz) for the monitored band.
@@ -49,8 +50,8 @@ impl Default for DetectionThresholds {
 ///
 /// # Classification rules
 ///
-/// 1. **CW with high SNR and wide bandwidth** → suspected jamming
-/// 2. **Bandwidth exceeding maximum legitimate** → suspected jamming
+/// 1. **CW with high SNR and wide bandwidth** -> suspected intentional disruption
+/// 2. **Bandwidth exceeding maximum legitimate** -> suspected intentional disruption
 /// 3. **High SNR with unknown modulation** → interference
 /// 4. **Everything else** → neutral (pending further analysis)
 #[must_use]
@@ -58,7 +59,7 @@ pub fn classify_signal(
     signal: &DetectedSignal,
     thresholds: &DetectionThresholds,
 ) -> SignalClassification {
-    // Rule 1: CW with abnormally wide bandwidth is classic barrage jamming
+    // Rule 1: CW with abnormally wide bandwidth is treated as a synthetic anomaly.
     if signal.modulation == Modulation::Cw
         && signal.snr_db > thresholds.interference_snr_db
         && signal.bandwidth_hz > thresholds.wideband_threshold_hz
@@ -82,7 +83,7 @@ pub fn classify_signal(
     SignalClassification::Neutral
 }
 
-/// Defensive response recommendation based on detected threats.
+/// Defensive response recommendation based on classified anomalies.
 ///
 /// These are purely advisory — the actual response is decided by
 /// the autonomy module with SPARK-proven safety constraints.

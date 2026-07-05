@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+// Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
-//! Defensive Autonomy — collision avoidance, threat response, safe-state.
+//! Defensive Autonomy — collision avoidance, anomaly response, safe-state.
 //!
 //! DEFENSIVE USE ONLY — all autonomous decisions are defensive in nature.
 //! No offensive or lethal capability exists in this module. The type system
@@ -24,7 +25,7 @@ use crate::formation::{AgentState, Velocity};
 /// `src/abi/Proofs/NoLethal.idr`.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum DefensiveAction {
-    /// Continue current trajectory — no threat detected.
+    /// Continue current trajectory — no anomaly requiring action detected.
     Continue,
     /// Adjust velocity to maintain safe separation distance.
     AvoidCollision {
@@ -38,7 +39,7 @@ pub enum DefensiveAction {
     },
     /// Execute a frequency hop to avoid ECM interference.
     FrequencyHop {
-        /// Target frequency in Hz.
+        /// Selected backup frequency in Hz.
         target_freq_hz: f64,
     },
     /// Request human operator intervention.
@@ -98,9 +99,9 @@ impl Default for SafetyParams {
 /// This is the main autonomous decision function. It considers:
 /// 1. Proximity to other agents (collision avoidance — always active).
 /// 2. Communication link status.
-/// 3. ECM threat assessment.
+/// 3. Communications-degradation assessment.
 ///
-/// The decision is always defensive. If multiple threats exist,
+/// The decision is always defensive. If multiple degraded conditions exist,
 /// the most conservative (safest) action is chosen.
 #[must_use]
 pub fn compute_defensive_action(
@@ -131,11 +132,11 @@ pub fn compute_defensive_action(
         return avoidance;
     }
 
-    // Priority 3: ECM threat response.
+    // Priority 3: communications-degradation response.
     match ecm_recommendation {
         DefensiveRecommendation::AlertOperator => {
             return DefensiveAction::RequestHumanControl {
-                situation: "ECM threat detected — operator assessment required".to_string(),
+                situation: "Communications anomaly detected; operator assessment required".to_string(),
             };
         }
         DefensiveRecommendation::FrequencyHop => {

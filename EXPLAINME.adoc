@@ -1,99 +1,115 @@
-// SPDX-License-Identifier: MPL-2.0
-= Robodog ECM - Electronic Countermeasures & Defensive Technologies — Show Me The Receipts
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= robodog-defensive-systems-lab — Evidence for Public Claims
 :toc:
 :icons: font
 
-The README makes claims. This file backs them up with evidence from real code.
+This file maps the README framing to repository artifacts. It is intentionally
+limited to non-operational research claims: synthetic simulation,
+communications resilience, secure coordination, autonomy-safety, and formal
+interface boundaries.
 
-== Core Claims & Evidence
+== Core Claims and Evidence
 
-=== Claim 1: "Cryptographic Protocol Suite: NIST Post-Quantum Standards"
+=== Claim 1: Post-Quantum Cryptographic Families Are Represented
 
-**From README** (line 56):
+The README describes research involving:
+
 ____
-* **Cryptography:** Kyber1024, Dilithium5, SPHINCS+ (NIST PQC standards)
-____
-
-**Evidence**: `/var/mnt/eclipse/repos/robodog-ecm/src/crypto.rs` implements Kyber1024 (ML-KEM-1024), Dilithium5 (ML-DSA-87), SPHINCS+ via liboqs-rust bindings. Integration tests in `/var/mnt/eclipse/repos/robodog-ecm/tests/crypto_integration_test.rs` verify key exchange, signature generation, and serialization roundtrips.
-
-**Caveat**: Crypto implementations are *thin bindings* to liboqs (C library). No formal proofs of cryptographic correctness—only type-safe Rust wrappers around NIST reference implementations.
-
-=== Claim 2: "Idris2 ABI + Zig FFI for Formal Verification"
-
-**From README** (lines 51-52):
-____
-| ABI | **Idris2** | Dependent-type interface proofs
-| FFI | **Zig** | C-ABI bridge between ABI and core
+ML-KEM, ML-DSA, and SLH-DSA, the NIST-standardised post-quantum cryptographic
+families derived from the Kyber, Dilithium, and SPHINCS+ submissions.
 ____
 
-**Evidence**: `/var/mnt/eclipse/repos/robodog-ecm/src/abi/` contains Idris2 type definitions for ECM signal classification (Types.idr), formation geometry (Formation.idr), and cryptographic operations (Crypto.idr). `/var/mnt/eclipse/repos/robodog-ecm/ffi/zig/src/main.zig` implements the Zig FFI layer exposing C-ABI functions that call into Rust core.
+Evidence: `src/rust/src/lib.rs`, `src/abi/Crypto.idr`, and the Rust test suites
+exercise post-quantum protocol interfaces and round-trip behaviour.
 
-**Caveat**: ABI proofs are *interface contracts only*. The Rust implementation (`src/ecm.rs`, `src/crypto.rs`) is NOT mechanically verified to match those contracts—correspondence is manual and property-tested via `/var/mnt/eclipse/repos/robodog-ecm/tests/` only.
+Caveat: cryptographic completeness should be evaluated from the current source
+and tests. This repository should not be read as claiming independently proven
+cryptographic implementations.
 
-=== Claim 3: "Export Control Compliance: Defensive Use Only"
+=== Claim 2: Formal and Interface Safety Boundaries Exist
 
-**From README** (lines 77-86):
-____
-This project follows strict export control policies:
-1. **No offensive capabilities** - Defensive technologies only
-2. **No unauthorized export** - Compliance with ITAR/EAR regulations
-3. **Documented use cases** - All implementations have defensive justification
-4. **Access control** - Contributors must acknowledge export restrictions
-____
+The README describes an Idris2 ABI layer, a Zig FFI layer, and Ada/SPARK safety
+specifications.
 
-**Evidence**: `/var/mnt/eclipse/repos/robodog-ecm/EXPORT-CONTROL.md` documents compliance framework. `/var/mnt/eclipse/repos/robodog-ecm/Trustfile` (780 lines, 18 operational checks) enforces defensive-use constraints at build and runtime.
+Evidence:
 
-**Caveat**: Export control compliance depends on users *not* circumventing the code. Access control is voluntary (contributor acknowledgment). No cryptographic binding enforcement of "defensive use only" at execution time.
+* `src/abi/` contains Idris2 interface definitions for typed signal,
+  cryptographic, formation, and foreign-function boundaries.
+* `ffi/zig/src/main.zig` contains the Zig FFI bridge.
+* `src/spark/src/` contains SPARK specifications for bounded safety behaviour.
 
-== Dogfooded Across The Account
+Caveat: these are boundary and specification artifacts. They do not make every
+Rust implementation mechanically verified unless the relevant proof and test
+coverage is present.
 
-Uses the hyperpolymath ABI/FFI standard (Idris2 ABI + Zig FFI + V API). Same architectural pattern across:
-- https://github.com/hyperpolymath/proven-servers[proven-servers] — Protocol verification
-- https://github.com/hyperpolymath/burble[burble] — Telecom control plane
-- https://github.com/hyperpolymath/stapeln[stapeln] — Container validation
-- https://github.com/hyperpolymath/valence-shell[valence-shell] — Reversible operations
+=== Claim 3: Publication Safety and Compliance Boundaries Are Documented
 
-All share: *Formal verification at boundaries, high-performance Rust inside, safe FFI exposed via Zig.*
+The README states that the public repository is non-operational and limited to
+defensive research.
+
+Evidence:
+
+* `README.adoc` defines the safety and publication boundary.
+* `DEFENSIVE-USE.md` defines the repository use policy.
+* `EXPORT-CONTROL.md` records compliance and export-control review context.
+* `contractiles/trust/Trustfile.a2ml` records provenance, safety-boundary, and
+  compliance metadata checks.
+
+Caveat: these policy files do not replace legal advice and do not authorise any
+restricted activity. Contributors and users remain responsible for applicable
+laws and institutional policies.
 
 == File Map
 
 [cols="1,3"]
 |===
-| Path | Contents & Purpose
+| Path | Contents and Purpose
 
-| `src/ecm.rs` | ECM signal analysis: FFT spectrum computation, signal detection, interference classification. No formal proofs—empirical algorithms.
+| `src/rust/src/ecm/`
+| Synthetic spectrum-awareness and interference-classification logic. Public
+  examples should use synthetic data only.
 
-| `src/crypto.rs` | Post-quantum cryptography: Kyber1024 key encapsulation, Dilithium5 digital signatures, SPHINCS+ hash-based fallback. Thin bindings to liboqs.
+| `src/rust/src/crypto/`
+| Post-quantum secure-communication protocol experiments and wrappers.
 
-| `src/formation.rs` | Formation control: 5 shapes (line, wedge, diamond, circle, grid), separation distance calculations, collision avoidance logic. Geometry functions but no formal proofs of safety.
+| `src/rust/src/formation/`
+| Formation geometry, separation checks, and coordination primitives for
+  bounded simulation.
 
-| `src/autonomy.rs` | Defensive autonomy: safe-state transitions, threat detection, comms-loss recovery. State machines without formal model checking.
+| `src/rust/src/autonomy/`
+| Safe-state, communication-loss, and collision-avoidance behaviour.
 
-| `src/abi/Types.idr` | Idris2 dependent types: ECMSignal (frequency, power, classification), Formation (shape, spacing, orientation), CryptoKey (algorithm, parameter witnesses). Interfaces only.
+| `src/abi/`
+| Idris2 interface contracts for typed boundaries and foreign interfaces.
 
-| `src/abi/ECM.idr` | Idris2 ECM classification interface proving signal type correctness.
+| `ffi/zig/`
+| Zig FFI bridge and C-ABI-facing interface experiments.
 
-| `src/abi/Formation.idr` | Idris2 formation geometry proofs: separation distance bounds, collision impossibility proofs.
+| `src/spark/`
+| Ada/SPARK safety specifications for selected safety boundaries.
 
-| `src/abi/Crypto.idr` | Idris2 key exchange and signature interface contracts.
+| `TEST-NEEDS.md`
+| Test coverage report for synthetic, bounded research scenarios.
 
-| `src/abi/Foreign.idr` | FFI boundary specification: C function declarations, parameter/return type contracts.
+| `EXPORT-CONTROL.md`
+| Export-control and publication-safety notice.
 
-| `ffi/zig/src/main.zig` | Zig FFI bridge: C-ABI compatible runtime exposing signal classification, distance checks, formation validation. Calls into Rust implementations.
+| `DEFENSIVE-USE.md`
+| Defensive-use policy and out-of-scope list.
 
-| `api/zig/` | ziguage public API: type mirrors of Idris2 ABI, query functions for classification and recommendations.
-
-| `spark/` | Ada/SPARK safety specs: formal specifications (not proofs) of ECM, formation, and autonomy safety invariants.
-
-| `tests/crypto_integration_test.rs` | Crypto roundtrip tests: key generation, encapsulation/decapsulation, signature generation/verification.
-
-| `tests/formation_test.rs` | Formation geometry validation: separation distance calculations, collision detection.
-
-| `EXPORT-CONTROL.md` | Compliance framework: ITAR/EAR/Wassenaar categories, defensive justification, access control policy.
-
-| `Trustfile` | Comprehensive trust boundary specification (780 lines, 18 operational checks).
+| `contractiles/trust/Trustfile.a2ml`
+| Trust-boundary metadata and repository checks.
 |===
 
-== Questions?
+== Relationship to Other Work
 
-Open an issue or reach out at j.d.a.jewell@open.ac.uk — happy to explain the ECM architecture, formal verification boundaries, and export control design.
+This repository shares the hyperpolymath pattern of formal boundaries with a
+Rust implementation core and explicit FFI surfaces. The public positioning here
+is narrower: synthetic simulation, resilience, secure coordination, safety
+cases, and formal/interface boundaries.
+
+== Questions
+
+Open an issue or reach out at j.d.a.jewell@open.ac.uk for questions about the
+research boundary, formal interface model, or compliance documentation.

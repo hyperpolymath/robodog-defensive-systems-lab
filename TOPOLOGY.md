@@ -1,15 +1,21 @@
-<!-- SPDX-License-Identifier: MPL-2.0 -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<!-- Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk> -->
 <!-- TOPOLOGY.md — Project architecture map and completion dashboard -->
-<!-- Last updated: 2026-03-16 -->
+<!-- Last updated: 2026-07-05 -->
 
-# Robodog ECM — Project Topology
+# robodog-defensive-systems-lab — Project Topology
+
+Publication boundary: this topology describes synthetic simulation,
+communications resilience, secure coordination, and autonomy-safety research.
+It is not a deployment architecture for fielded RF, surveillance, weapon, or
+restricted-end-user systems.
 
 ## System Architecture
 
 ```
                     ┌─────────────────────────────────────────────┐
-                    │           OPERATOR / COMMAND                 │
-                    │     (Mission Control / SDR Interface)        │
+                    │      SIMULATION / RESEARCH CONTROL           │
+                    │      (Synthetic Scenario Interface)          │
                     └──────────────────┬──────────────────────────┘
                                        │
                                        ▼
@@ -33,7 +39,7 @@
 │  autonomy/       │  │  separation, comms     │  │                      │
 │                  │  │  loss, safe-state      │  │  Dependent types:    │
 │  PQ crypto,      │  │                        │  │  key sizes, bands,   │
-│  signal FFT,     │  │  No: Suppress,         │  │  no offensive types  │
+│  synthetic FFT,  │  │  No: Suppress,         │  │  no offensive types  │
 │  formation geom, │  │  Unchecked_*,          │  │                      │
 │  collision avoid │  │  believe_me            │  │  No: partial,        │
 └──────────────────┘  └────────────────────────┘  │  believe_me,         │
@@ -54,19 +60,19 @@
 COMPONENT                          STATUS              NOTES
 ─────────────────────────────────  ──────────────────  ─────────────────────────────────
 RUST CORE (src/rust/)
-  ECM Signal Analysis               ████░░░░░░  40%    Signals, detection, FFT spectrum
-  Cryptographic Protocols           ████░░░░░░  40%    Kyber1024, Dilithium5, SPHINCS+
+  Synthetic Spectrum Awareness       ████░░░░░░  40%    Synthetic signals, classification, FFT spectrum
+  Cryptographic Protocols           ████░░░░░░  40%    ML-KEM, ML-DSA, SLH-DSA-family wrappers
   Formation Control Algorithms      ████░░░░░░  40%    5 shapes, separation checks
   Defensive Autonomy Logic          ████░░░░░░  40%    Collision avoid, safe-state, comms
 
 SPARK SAFETY (src/spark/)
-  ECM Safety Proofs                 ███░░░░░░░  30%    Band bounds, power limits
+  Spectrum-Awareness Safety Specs   ███░░░░░░░  30%    Band bounds, power limits
   Formation Safety Proofs           ███░░░░░░░  30%    Separation distance
   Autonomy Safety Proofs            ███░░░░░░░  30%    Comms timeout, speed, safe-state
 
 IDRIS2 ABI (src/abi/)
   Core Types                        ████░░░░░░  40%    Frequency, modulation, signals
-  ECM Types                         ████░░░░░░  40%    Power bounds, snapshots
+  Spectrum-Awareness Types          ████░░░░░░  40%    Power bounds, synthetic snapshots
   Crypto Types                      ████░░░░░░  40%    Key sizes, PQ algorithms
   Formation Types                   ███░░░░░░░  30%    Coordinates, separation proofs
   FFI Declarations                  ███░░░░░░░  30%    Zig bridge bindings
@@ -75,12 +81,12 @@ ZIG API + FFI (ffi/zig/)
   Signal Classification             ████░░░░░░  40%    3 rules, band checking
   Distance / Separation             █████░░░░░  50%    Ground + aerial, integer math
   Formation Computation             ███░░░░░░░  30%    Line + circle, rest TBD
-  ECM API                           ████░░░░░░  40%    Full type mirror, classify, recommend
+  Spectrum-Awareness API            ████░░░░░░  40%    Type mirror, classify, recommend
   ABI Verification Types            ███░░░░░░░  30%    Round-trip proofs
 
 INFRASTRUCTURE
-  Export Control Framework          ██████████ 100%    ITAR/EAR/Wassenaar documented
-  Trustfile.a2ml                    ██████████ 100%    780 lines, 18 checks, sealed
+  Export Control Framework          ██████████ 100%    Compliance and publication-safety context
+  Trustfile.a2ml                    ██████████ 100%    Repository trust and safety-boundary checks
   .machine_readable/                ██████████ 100%    STATE tracking active
   0-AI-MANIFEST.a2ml                ██████████ 100%    AI entry point verified
   Generated C Header                ██████████ 100%    robodog_ffi.h
@@ -88,7 +94,7 @@ INFRASTRUCTURE
 REPO INFRASTRUCTURE
   Justfile Automation               ████████░░  80%    Build tasks configured
   CI/CD Workflows                   ██████████ 100%    17 standard workflows
-  Documented Use Cases              ██████████ 100%    Defensive justification complete
+  Publication Boundary              ██████████ 100%    Defensive research scope documented
 
 ─────────────────────────────────────────────────────────────────────────────
 OVERALL:                            ████░░░░░░  ~40%   v0.1 Foundation

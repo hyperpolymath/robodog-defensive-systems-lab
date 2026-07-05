@@ -1,4 +1,5 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 // SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell (hyperpolymath) <6759885+hyperpolymath@users.noreply.github.com>
 = Troubleshooting — robodog-ecm
 :revdate: 2026-MM-DD
@@ -53,5 +54,5 @@ just log-tail        # last N lines of logs
 
 * `docs/architecture.adoc` — internals.
 * `docs/decisions/` — historical record of why things are this shape.
-* `https://github.com/hyperpolymath/robodog-ecm/issues?q=is%3Aissue+<your symptom>` — has anyone hit this before?
+* `https://github.com/hyperpolymath/robodog-defensive-systems-lab/issues?q=is%3Aissue+<your symptom>` — has anyone hit this before?
 * `https://github.com/hyperpolymath/standards/issues` — for estate-wide problems.

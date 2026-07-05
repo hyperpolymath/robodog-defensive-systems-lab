@@ -1,49 +1,100 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: CC-BY-SA-4.0
 // SPDX-FileCopyrightText: 2025-2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
-= Robodog ECM - Electronic Countermeasures & Defensive Technologies
+= robodog-defensive-systems-lab
 :toc:
 :toclevels: 3
 
-image:https://img.shields.io/badge/OpenSSF-Best_Practices-green?logo=opensourcesecurity[OpenSSF Best Practices,link="https://www.bestpractices.dev/en/projects/new?repo_url=https://github.com/hyperpolymath/robodog-ecm"]
-image:https://img.shields.io/badge/License-PMPL--1.0-blue.svg[License: PMPL-1.0,link="https://github.com/hyperpolymath/palimpsest-license"]
+image:https://img.shields.io/badge/OpenSSF-Best_Practices-green?logo=opensourcesecurity[OpenSSF Best Practices,link="https://www.bestpractices.dev/en/projects/new?repo_url=https://github.com/hyperpolymath/robodog-defensive-systems-lab"]
+image:https://img.shields.io/badge/License-MPL--2.0-blue.svg[License: MPL-2.0,link="LICENSE"]
 image:https://api.thegreenwebfoundation.org/greencheckimage/github.com[Green Web,link="https://www.thegreenwebfoundation.org/green-web-check/?url=github.com"]
-image:https://img.shields.io/badge/Philosophy-Palimpsest-indigo.svg[Palimpsest,link="https://github.com/hyperpolymath/palimpsest-license"]
-image:https://img.shields.io/badge/Export_Control-Defensive_Use_Only-orange.svg[Defensive Use Only]
+image:https://img.shields.io/badge/Policy-Defensive_Use-orange.svg[Defensive Use Policy,link="DEFENSIVE-USE.md"]
 
-**EXPORT CONTROL NOTICE:** This repository contains dual-use defensive technologies for Electronic Countermeasures (ECM), cryptography, and autonomous systems coordination. All content is for defensive applications only. See EXPORT-CONTROL.md for compliance requirements.
+Defensive spectrum-awareness, secure coordination, and autonomy-safety research.
+
+== Safety and Publication Boundary
+
+This repository is intentionally limited to non-operational research artifacts:
+
+* synthetic data only;
+* no real RF captures;
+* no operational jamming procedures;
+* no target-selection, tracking, or surveillance workflows;
+* no weapon-control or payload-control logic;
+* no instructions for unlawful interference with communications;
+* no deployment guidance for military or restricted end users.
+
+Hardware-facing, RF-facing, or field-test work is out of scope for the public repository unless separately reviewed for safety, legality, and export-control compliance.
 
 == Overview
 
-Robodog ECM is a research platform for defensive technologies including:
+`robodog-defensive-systems-lab` is a defensive research repository for synthetic simulation, resilience testing, secure coordination, and autonomy-safety boundaries.
 
-* **Electronic Countermeasures (ECM)** - Signal jamming, interference detection, and spectrum management
-* **Cryptographic Protocols** - Secure communications for autonomous systems
-* **Formation Control** - Distributed coordination algorithms for robotic systems
-* **Defensive Autonomy** - Collision avoidance, threat detection, and safe operation
+The repository focuses on:
 
-**Primary Applications:**
-- Defensive military applications (ECM, secure comms)
-- Search and rescue coordination
-- Disaster response robot swarms
-- Secure autonomous system research
+* synthetic signal-environment modelling;
+* communications-degradation resilience testing;
+* secure communications for autonomous systems;
+* formation-safety checks;
+* safe-state behaviour;
+* non-operational anomaly detection;
+* formal/interface safety boundaries.
 
-**Explicitly NOT for:**
-- Offensive weapons systems
-- Surveillance or tracking of individuals
-- Export to restricted countries
-- Any use violating export control regulations
+Applications include civil resilience, search-and-rescue coordination, disaster-response robotics, secure autonomous-system research, and defensive safety analysis in lawful, authorised environments.
+
+ECM-related terminology in this repository is used in the limited sense of defensive spectrum-awareness, interference modelling, resilience, classification, and safety simulation. It is not used to describe operational interference, offensive activity, or field deployment guidance.
+
+== What This Repository Is
+
+This repository is a defensive research platform for autonomous-system resilience. It focuses on synthetic signal-environment modelling, secure communications, formation-safety checks, and safe-state behaviour for coordinated robotic systems.
+
+ECM-related work is limited to non-operational simulation, detection, classification, resilience testing, and safety documentation.
+
+== What This Repository Is Not
+
+This repository is not a weapons project, surveillance project, operational ECM toolkit, RF attack toolkit, or deployment guide.
+
+It does not provide instructions for unlawful interference, real-world jamming, target tracking, evasion, intrusion, or offensive autonomous behaviour. Any examples are synthetic, constrained, and intended for safety analysis, resilience testing, and formally bounded research.
 
 == Relationship to Other Projects
 
-**Separate from:**
-- `anvomidav` - Figure skating choreography (civilian, export-safe)
-- `robot-vacuum-cleaner` - Domestic robot simulation (civilian)
+This repository is separate from:
 
-**Related to:**
-- Formation control algorithms (defensive coordination)
-- Autonomous navigation (safe operation)
-- Cryptographic protocols (secure communications)
+* `anvomidav` - figure-skating choreography and civilian motion modelling;
+* `robot-vacuum-cleaner` - domestic robot simulation.
+
+It is related to broader research on:
+
+* safe formation geometry and separation checks;
+* secure communication protocols for coordinated systems;
+* autonomy safe-state behaviour under degraded communication;
+* interface contracts and ABI safety boundaries.
+
+== Architecture
+
+The repository is organised around a simulation-first safety boundary:
+
+[cols="1,3"]
+|===
+| Area | Role
+
+| Rust core
+| Synthetic signal-environment models, communications-degradation classification, formation checks, and safe-state logic.
+
+| Ada/SPARK safety layer
+| Formal specifications for safety-critical limits, separation constraints, communication-loss behaviour, and safe-state transitions.
+
+| Idris2 ABI layer
+| Dependent-type interface contracts for data shapes, safety boundaries, and cross-language calling conventions.
+
+| Zig FFI layer
+| C-ABI bridge for bounded interface experiments and type-mirror checks.
+
+| Trust and compliance files
+| Publication-safety, export-control, provenance, and repository-policy documentation.
+|===
+
+See link:TOPOLOGY.md[TOPOLOGY.md] for the architecture map and completion dashboard.
 
 == Technology Stack
 
@@ -51,68 +102,82 @@ Robodog ECM is a research platform for defensive technologies including:
 |===
 | Layer | Language | Purpose
 
-| Core | **Rust** | ECM analysis, PQ crypto, formation control, autonomy
-| Safety | **Ada/SPARK** | Formally verified safety-critical subsystems
-| ABI | **Idris2** | Dependent-type interface proofs
-| FFI | **Zig** | C-ABI bridge between ABI and core
-| API | **zig** | Consumer-facing API surface
+| Core | Rust | Synthetic spectrum-awareness modelling, secure coordination experiments, formation-safety checks, and safe-state behaviour
+| Safety | Ada/SPARK | Formally specified safety-critical subsystems
+| ABI | Idris2 | Dependent-type interface contracts and safety-boundary proofs
+| FFI | Zig | C-ABI bridge between ABI definitions and implementation experiments
+| API | Zig | Consumer-facing interface surface for bounded research workflows
 |===
 
-* **Cryptography:** Kyber1024, Dilithium5, SPHINCS+ (NIST PQC standards)
-* **ECM Simulation:** Synthetic signal models (no real RF captures)
-* **Coordination:** Potential-field collision avoidance, formation geometry
+* Cryptography: ML-KEM, ML-DSA, and SLH-DSA, the NIST-standardised post-quantum cryptographic families derived from the Kyber, Dilithium, and SPHINCS+ submissions.
+* Spectrum-awareness modelling: synthetic signal-environment data only; no real RF captures.
+* Coordination: formation geometry, separation checks, communication-loss handling, and safe-state behaviour.
 
-== Status
+Implementation completeness should be evaluated from the code and tests, not inferred from roadmap terminology.
 
-**Phase:** v0.1 Foundation
-**Completion:** ~40%
+== Current Status
 
-**Implemented:**
-- [x] ECM signal analysis (signals, detection, FFT spectrum)
-- [x] Cryptographic protocol suite (Kyber1024, Dilithium5, SPHINCS+)
-- [x] Formation control algorithms (5 shapes, separation checks)
-- [x] Defensive autonomy (collision avoidance, safe-state, comms loss)
-- [x] Export control compliance framework (ITAR/EAR/Wassenaar)
-- [x] SPARK safety specs (ECM, formation, autonomy)
-- [x] Idris2 ABI definitions (Types, ECM, Crypto, Formation, Foreign)
-- [x] Zig FFI bridge (classification, distance, formation)
-- [x] zig API (full type mirror, classification, recommendations)
-- [x] Comprehensive Trustfile (780 lines, 18 operational checks)
+Phase: v0.1 Foundation
 
-== Export Control Compliance
+Completion: approximately 40%
 
-This project follows strict export control policies:
+Implemented or partially implemented:
 
-1. **No offensive capabilities** - Defensive technologies only
-2. **No unauthorized export** - Compliance with ITAR/EAR regulations
-3. **Documented use cases** - All implementations have defensive justification
-4. **Access control** - Contributors must acknowledge export restrictions
+* synthetic signal analysis and interference classification;
+* post-quantum cryptographic protocol experiments;
+* formation geometry and separation checks;
+* safe-state and communications-loss behaviour;
+* export-control and publication-safety documentation;
+* SPARK safety specifications for spectrum-awareness, formation, and autonomy boundaries;
+* Idris2 ABI definitions for typed interfaces;
+* Zig FFI bridge experiments for classification, distance, and formation checks;
+* Trustfile-based repository checks for provenance, safety boundaries, and compliance metadata.
 
-See `EXPORT-CONTROL.md` for full compliance requirements.
+== Compliance and Export-Control Notice
 
-== Development Roadmap
+This repository may contain dual-use research artifacts involving cryptography, autonomous-system coordination, spectrum-awareness modelling, and safety analysis. It is published as non-operational research and is subject to the safety and publication boundary above.
 
-=== v0.1 - Foundation (Q1 2026)
-- [ ] Export control compliance framework
-- [ ] Cryptographic protocol design
-- [ ] ECM signal analysis basics
-- [ ] Formation control primitives
+Users and contributors are responsible for complying with all applicable laws, sanctions regimes, institutional policies, and export-control requirements. Nothing in this repository is legal advice or an authorisation to perform restricted activity.
 
-=== v0.2 - Core Technologies (Q2 2026)
-- [ ] SDR integration for ECM testing
-- [ ] Secure communication protocols
-- [ ] Distributed coordination algorithms
-- [ ] Threat detection models
+See link:EXPORT-CONTROL.md[EXPORT-CONTROL.md] for the compliance notice and link:DEFENSIVE-USE.md[DEFENSIVE-USE.md] for repository use policy.
 
-=== v0.3 - Integration (Q3 2026)
-- [ ] Multi-agent simulation
-- [ ] Hardware-in-the-loop testing
-- [ ] Secure key distribution
-- [ ] Performance benchmarks
+== Roadmap
 
-== License
+=== v0.1 - Foundation
 
-MPL-2.0 (Palimpsest License)
+* Export-control and publication-safety documentation
+* Synthetic signal-environment modelling
+* Cryptographic protocol design
+* Formation-safety primitives
+* Safe-state and communications-loss behaviour
+* Interface and ABI safety boundaries
+
+=== v0.2 - Core Technologies
+
+* Synthetic signal-environment simulator
+* Communications-degradation resilience tests
+* Secure communication protocol experiments
+* Formation-safety verification
+* Non-operational anomaly-detection models
+* Export-control and publication-safety review before any hardware-facing work
+
+=== v0.3 - Integration
+
+* Multi-agent simulation
+* Safety-case dashboard
+* Secure key-distribution simulation
+* Performance benchmarks on synthetic data
+* Hardware-in-the-loop planning document only, subject to separate compliance review
+
+== License and Use Policy
+
+Code license: MPL-2.0, unless otherwise stated in individual files.
+
+Additional repository policy: see link:DEFENSIVE-USE.md[DEFENSIVE-USE.md].
+
+Compliance notice: see link:EXPORT-CONTROL.md[EXPORT-CONTROL.md].
+
+The defensive-use and export-control notices describe project policy and publication boundaries. They should not be confused with the OSI status of the code license.
 
 == Authors
 
@@ -120,9 +185,4 @@ Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 == Acknowledgments
 
-This research is conducted in accordance with international export control regulations and ethical guidelines for defensive autonomous systems.
-
-
-== Architecture
-
-See link:TOPOLOGY.md[TOPOLOGY.md] for a visual architecture map and completion dashboard.
+This research is maintained with explicit publication-safety, export-control, and autonomy-safety boundaries for defensive and civil-resilience research.

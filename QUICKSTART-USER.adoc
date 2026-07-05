@@ -1,13 +1,14 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 // Template: QUICKSTART-USER.adoc — 5-minute path to working software
-// Replace robodog-ecm, Robodog Ecm — See README.adoc for details., just run, Robodog Ecm started successfully. with actuals
-= robodog-ecm — Quick Start for Users
+// Replace robodog-defensive-systems-lab, {{SUMMARY}}, just run, {{SUCCESS_MESSAGE}} with actuals
+= robodog-defensive-systems-lab — Quick Start for Users
 :toc:
 :toclevels: 2
 
-== What is robodog-ecm?
+== What is robodog-defensive-systems-lab?
 
-Robodog Ecm — See README.adoc for details.
+Defensive spectrum-awareness, secure coordination, and autonomy-safety research. See README.adoc for details.
 
 == Prerequisites
 
@@ -37,8 +38,8 @@ Before you begin, ensure you have:
 [source,bash]
 ----
 # Clone and set up
-git clone https://github.com/hyperpolymath/robodog-ecm.git
-cd robodog-ecm
+git clone https://github.com/hyperpolymath/robodog-defensive-systems-lab.git
+cd robodog-defensive-systems-lab
 just setup
 ----
 
@@ -75,7 +76,7 @@ Expected output:
 
 [source]
 ----
-Robodog Ecm started successfully.
+robodog-defensive-systems-lab started successfully.
 ----
 
 == Self-Diagnostic
@@ -102,7 +103,7 @@ just heal
 * **In-app**: `just run --help`
 * **Guided tour**: `just tour`
 * **Report a problem**: `just help-me` (pre-fills diagnostic context)
-* **Wiki**: https://github.com/hyperpolymath/robodog-ecm/wiki
+* **Wiki**: https://github.com/hyperpolymath/robodog-defensive-systems-lab/wiki
 
 == Uninstall
 

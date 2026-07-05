@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MPL-2.0
-# Dustfile — Recovery and rollback semantics for Robodog ECM
+# Dustfile — Recovery and rollback semantics for robodog-defensive-systems-lab
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 
 version: 1
@@ -25,14 +25,14 @@ recovery:
 
   container-supply-chain:
     - name: container-rollback
-      event: "deploy.failure"
+      event: "release.failure"
       undo: "ct verify <previous.ctp> && ct push <previous.ctp> <registry>"
       notes: "Rollback to previous cerro-torre bundle. Verify signature before push."
 
   trustfile-failure:
     - name: trustfile-block
       event: "trustfile.critical.failure"
-      undo: "Build and deploy are blocked until all critical checks pass."
+      undo: "Build and release are blocked until all critical checks pass."
       notes: "No bypass. Fix the source, don't suppress the check."
 
   export-control-violation:

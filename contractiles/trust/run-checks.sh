@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: MPL-2.0
-# run-checks.sh — Execute all Trustfile operational checks
+# run-checks.sh — Execute all Trustfile repository checks
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
-# Parses the [OPERATIONAL_CHECKS] section of Trustfile.a2ml and runs each
-# check sequentially. Exits non-zero if any critical check fails.
+# Parses the legacy [OPERATIONAL_CHECKS] section of Trustfile.a2ml and runs
+# each repository-safety check sequentially. Exits non-zero if any critical
+# check fails.
 
 TRUSTFILE="$(dirname "$0")/Trustfile.a2ml"
 FAILED=0
@@ -24,7 +25,7 @@ else
 fi
 
 echo -e "${CYAN}╔══════════════════════════════════════════════════════════════╗${NC}"
-echo -e "${CYAN}║  Robodog ECM — Trustfile Operational Checks                 ║${NC}"
+echo -e "${CYAN}║  robodog-defensive-systems-lab — Repository Checks          ║${NC}"
 echo -e "${CYAN}╚══════════════════════════════════════════════════════════════╝${NC}"
 echo ""
 
@@ -142,7 +143,7 @@ echo -e "${CYAN}─────────────────────�
 
 if [[ $CRITICAL_FAILED -gt 0 ]]; then
     echo -e "\n${RED}BLOCKED: ${CRITICAL_FAILED} critical check(s) failed.${NC}"
-    echo -e "${RED}Build/deploy is not permitted until all critical checks pass.${NC}"
+    echo -e "${RED}Build/release is not permitted until all critical checks pass.${NC}"
     exit 1
 fi
 
