@@ -1,7 +1,8 @@
 -- SPDX-License-Identifier: MPL-2.0
 -- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+-- Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 --
--- Types.idr — Core type universe for Robodog ECM ABI.
+-- Types.idr — Core type universe for robodog-ecm ABI.
 --
 -- DEFENSIVE USE ONLY — Wassenaar Cat 5A2 / Cat 11.
 -- All types are total. No partial functions, no escape hatches.
@@ -23,7 +24,7 @@ public export
 freqHz : Frequency -> Nat
 freqHz (MkFreq hz) = hz
 
-||| Supported frequency bands for ECM simulation.
+||| Supported frequency bands for synthetic spectrum-awareness simulation.
 public export
 data FreqBand : Type where
   HF  : FreqBand  -- 0–30 MHz
@@ -44,7 +45,7 @@ data Modulation : Type where
   DSSS : Modulation  -- Direct-sequence spread spectrum
 
 ||| Defensive signal classification.
-||| Note: there is NO constructor for offensive targeting.
+||| Note: there is NO constructor for offensive target selection.
 public export
 data SignalClass : Type where
   Friendly        : SignalClass

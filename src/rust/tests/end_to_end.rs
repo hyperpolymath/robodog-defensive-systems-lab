@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+// Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 //! End-to-end tests — full scenario simulations.
 //!
 //! Each test exercises the complete pipeline: signal generation →
-//! spectrum analysis → threat detection → formation response →
+//! spectrum analysis → anomaly classification → formation response →
 //! autonomous action, with cryptographic channel establishment.
 
 use robodog_ecm::autonomy::{
@@ -27,8 +28,8 @@ use robodog_ecm::formation::{
 /// Full scenario: SAR mission with clear spectrum.
 ///
 /// 1. Establish secure channel (Kyber1024 + Dilithium5).
-/// 2. Deploy 4-agent wedge formation for area search.
-/// 3. Monitor spectrum — no threats detected.
+/// 2. Create a 4-agent wedge formation for area-search simulation.
+/// 3. Monitor synthetic spectrum — no anomalies detected.
 /// 4. All agents continue their trajectory.
 #[test]
 fn e2e_sar_mission_clear_spectrum() {
@@ -50,7 +51,7 @@ fn e2e_sar_mission_clear_spectrum() {
     let verified_order = verify(&signed_order, &sig_kp.public_key, SignatureAlgorithm::Dilithium5).unwrap();
     assert_eq!(verified_order, order);
 
-    // Step 2: Deploy formation.
+    // Step 2: Create formation.
     let agent_ids = vec![1, 2, 3, 4];
     let params = FormationParams {
         shape: FormationShape::Wedge,
@@ -101,15 +102,15 @@ fn e2e_sar_mission_clear_spectrum() {
     }
 }
 
-/// Full scenario: formation under ECM attack.
+/// Full scenario: formation under synthetic communications interference.
 ///
 /// 1. 4-agent circle formation established.
-/// 2. Barrage jammer detected on UHF band.
+/// 2. Wideband anomaly represented on a synthetic UHF band.
 /// 3. Classification → SuspectedJamming.
 /// 4. Recommendation → AlertOperator.
 /// 5. Autonomy → RequestHumanControl for all agents.
 #[test]
-fn e2e_formation_under_ecm_attack() {
+fn e2e_formation_under_synthetic_interference() {
     // Step 1: Formation.
     let agent_ids = vec![1, 2, 3, 4];
     let params = FormationParams {
@@ -129,8 +130,8 @@ fn e2e_formation_under_ecm_attack() {
         })
         .collect();
 
-    // Step 2: Jammer detected.
-    let jammer = DetectedSignal {
+    // Step 2: Synthetic anomaly represented.
+    let synthetic_anomaly = DetectedSignal {
         frequency_hz: 1_500_000_000.0,
         bandwidth_hz: 80_000_000.0,
         snr_db: 45.0,
@@ -142,11 +143,11 @@ fn e2e_formation_under_ecm_attack() {
 
     // Step 3: Classify.
     let thresholds = DetectionThresholds::default();
-    let class = classify_signal(&jammer, &thresholds);
+    let class = classify_signal(&synthetic_anomaly, &thresholds);
     assert_eq!(class, SignalClassification::SuspectedJamming);
 
     // Step 4: Recommend.
-    let recommendation = recommend_response(&[jammer], &thresholds);
+    let recommendation = recommend_response(&[synthetic_anomaly], &thresholds);
     assert_eq!(recommendation, DefensiveRecommendation::AlertOperator);
 
     // Step 5: All agents escalate to human control.

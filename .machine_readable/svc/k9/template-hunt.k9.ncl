@@ -1,17 +1,20 @@
 K9!
 # SPDX-License-Identifier: MPL-2.0
-# Robodog-ECM — Template Hunt (K9/Nickel).
+# Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+# robodog-defensive-systems-lab — Template Hunt (K9/Nickel).
 #
-# This component defines the formal strategy for "Hunting" — 
-//! automated reconnaissance and dependency discovery within the 
-//! electronic countermeasure ecosystem.
+# This component defines automated dependency discovery and repository
+# validation patterns for defensive research infrastructure.
 
 leash = 'Kennel # Combined evaluation and execution monitoring.
 
 pedigree = {
   schema_version = "1.0.0",
+  name = "robodog-defensive-systems-lab-hunt-template",
   component_type = "recon-strategy",
   description = "Defines the search patterns for dependency-based vulnerability hunting.",
+  security_level = "Hunt",
+  signature_required = true,
 }
 
 # SEARCH PATTERNS: Defines the identifiers and markers to look for.

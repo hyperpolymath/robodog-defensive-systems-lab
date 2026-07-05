@@ -12,7 +12,7 @@
   (source #f)
   (build-system gnu-build-system)
   (synopsis "robodog-ecm")
-  (description "robodog-ecm — part of the hyperpolymath ecosystem.")
-  (home-page "https://github.com/hyperpolymath/robodog-ecm")
+  (description "robodog-defensive-systems-lab — defensive spectrum-awareness and autonomy-safety research.")
+  (home-page "https://github.com/hyperpolymath/robodog-defensive-systems-lab")
   (license ((@@ (guix licenses) license) "MPL-2.0"
              "https://github.com/hyperpolymath/palimpsest-license")))

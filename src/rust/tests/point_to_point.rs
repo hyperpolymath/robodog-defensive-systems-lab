@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+// Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 //! Point-to-point (unit integration) tests.
 //!
 //! Each test verifies a single boundary between two modules:
-//! ECM↔Autonomy, Crypto↔Crypto (round-trips), Formation↔Autonomy.
+//! spectrum-awareness↔Autonomy, Crypto↔Crypto (round-trips), Formation↔Autonomy.
 
 use robodog_ecm::autonomy::{
     compute_defensive_action, DefensiveAction, SafetyParams,
@@ -25,8 +26,8 @@ use robodog_ecm::formation::{
 
 #[test]
 fn ecm_detection_feeds_autonomy_response() {
-    // Detect a jammer signal, classify it, get recommendation, feed to autonomy.
-    let jammer = DetectedSignal {
+    // Classify a synthetic anomaly, get recommendation, feed to autonomy.
+    let synthetic_anomaly = DetectedSignal {
         frequency_hz: 2_400_000_000.0,
         bandwidth_hz: 50_000_000.0,
         snr_db: 30.0,
@@ -37,10 +38,10 @@ fn ecm_detection_feeds_autonomy_response() {
     };
 
     let thresholds = DetectionThresholds::default();
-    let classification = classify_signal(&jammer, &thresholds);
+    let classification = classify_signal(&synthetic_anomaly, &thresholds);
     assert_eq!(classification, SignalClassification::SuspectedJamming);
 
-    let recommendation = recommend_response(&[jammer], &thresholds);
+    let recommendation = recommend_response(&[synthetic_anomaly], &thresholds);
     let agent = AgentState {
         id: 1,
         position: Position { x: 0.0, y: 0.0, z: 10.0 },
@@ -58,7 +59,7 @@ fn ecm_detection_feeds_autonomy_response() {
         true,
     );
 
-    // Jammer detection should escalate to human control.
+    // Synthetic anomaly classification should escalate to human control.
     assert!(matches!(action, DefensiveAction::RequestHumanControl { .. }));
 }
 
@@ -125,7 +126,7 @@ fn dilithium_sign_verify_boundary() {
 #[test]
 fn sphincs_sign_verify_boundary() {
     let kp = sig_keygen(SignatureAlgorithm::SphincsPlusSha2256f).unwrap();
-    let msg = b"ecm threat advisory";
+    let msg = b"communications anomaly advisory";
     let signed = sign(msg, &kp.secret_key, SignatureAlgorithm::SphincsPlusSha2256f).unwrap();
     let opened = verify(&signed, &kp.public_key, SignatureAlgorithm::SphincsPlusSha2256f).unwrap();
     assert_eq!(opened, msg);
