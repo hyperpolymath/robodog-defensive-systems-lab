@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 // Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 // Template: QUICKSTART-MAINTAINER.adoc — packaging, installing, and maintaining
-// Replace robodog-defensive-systems-lab, {{PACKAGE_NAME}}, {{DEPS}} with actuals
+// Replace robodog-defensive-systems-lab, robodog-defensive-systems-lab, {{DEPS}} with actuals
 = robodog-defensive-systems-lab — Quick Start for Platform Maintainers
 :toc:
 :toclevels: 2
@@ -70,10 +70,10 @@ Files installed:
 | `$PREFIX/bin/`
 | Executables
 
-| `$PREFIX/share/{{PACKAGE_NAME}}/`
+| `$PREFIX/share/robodog-defensive-systems-lab/`
 | Data files, assets
 
-| `$PREFIX/share/doc/{{PACKAGE_NAME}}/`
+| `$PREFIX/share/doc/robodog-defensive-systems-lab/`
 | Documentation
 
 | `$PREFIX/share/applications/`
@@ -85,9 +85,9 @@ Files installed:
 
 == Configuration
 
-Default config location: `$XDG_CONFIG_HOME/{{PACKAGE_NAME}}/config.toml`
+Default config location: `$XDG_CONFIG_HOME/robodog-defensive-systems-lab/config.toml`
 
-Fallback: `$HOME/.config/{{PACKAGE_NAME}}/config.toml`
+Fallback: `$HOME/.config/robodog-defensive-systems-lab/config.toml`
 
 == Health Checks
 
@@ -107,7 +107,7 @@ just build-release
 just install --prefix=/usr/local
 ----
 
-Or via OPSM: `opsm update {{PACKAGE_NAME}}`
+Or via OPSM: `opsm update robodog-defensive-systems-lab`
 
 == Security Notes
 
@@ -122,8 +122,8 @@ For installing multiple isolated instances (e.g., different users or tenants):
 
 [source,bash]
 ----
-just install --prefix=/opt/{{PACKAGE_NAME}}-instance1 --config=/etc/{{PACKAGE_NAME}}/instance1.toml
-just install --prefix=/opt/{{PACKAGE_NAME}}-instance2 --config=/etc/{{PACKAGE_NAME}}/instance2.toml
+just install --prefix=/opt/robodog-defensive-systems-lab-instance1 --config=/etc/robodog-defensive-systems-lab/instance1.toml
+just install --prefix=/opt/robodog-defensive-systems-lab-instance2 --config=/etc/robodog-defensive-systems-lab/instance2.toml
 ----
 
 Each instance has isolated config, data, and logs.
