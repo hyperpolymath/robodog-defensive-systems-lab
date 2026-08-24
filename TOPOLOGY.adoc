@@ -1,18 +1,13 @@
-<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
-<!-- Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk> -->
-<!-- TOPOLOGY.md — Project architecture map and completion dashboard -->
-<!-- Last updated: 2026-07-05 -->
-
-# robodog-defensive-systems-lab — Project Topology
+== robodog-defensive-systems-lab — Project Topology
 
 Publication boundary: this topology describes synthetic simulation,
-communications resilience, secure coordination, and autonomy-safety research.
-It is not a deployment architecture for fielded RF, surveillance, weapon, or
-restricted-end-user systems.
+communications resilience, secure coordination, and autonomy-safety
+research. It is not a deployment architecture for fielded RF,
+surveillance, weapon, or restricted-end-user systems.
 
-## System Architecture
+=== System Architecture
 
-```
+....
                     ┌─────────────────────────────────────────────┐
                     │      SIMULATION / RESEARCH CONTROL           │
                     │      (Synthetic Scenario Interface)          │
@@ -52,11 +47,11 @@ restricted-end-user systems.
 │  .machine_readable/   0-AI-MANIFEST     Justfile                    │
 │  .github/workflows/   contractiles/     TOPOLOGY.md                 │
 └─────────────────────────────────────────────────────────────────────┘
-```
+....
 
-## Completion Dashboard
+=== Completion Dashboard
 
-```
+....
 COMPONENT                          STATUS              NOTES
 ─────────────────────────────────  ──────────────────  ─────────────────────────────────
 RUST CORE (src/rust/)
@@ -98,11 +93,11 @@ REPO INFRASTRUCTURE
 
 ─────────────────────────────────────────────────────────────────────────────
 OVERALL:                            ████░░░░░░  ~40%   v0.1 Foundation
-```
+....
 
-## Language Stack
+=== Language Stack
 
-```
+....
            ┌─────────────────────┐
            │   zig (API)      │  Consumer-facing
            └──────────┬──────────┘
@@ -115,11 +110,11 @@ OVERALL:                            ████░░░░░░  ~40%   v0.1 
 │  RUST  │     │   SPARK     │    │  IDRIS2  │
 │ (Core) │     │  (Safety)   │    │  (ABI)   │
 └────────┘     └─────────────┘    └──────────┘
-```
+....
 
-## Key Dependencies
+=== Key Dependencies
 
-```
+....
 IDRIS2 ABI ──defines──► ZIG FFI ──bridges──► RUST CORE
      │                     │                    │
      │                     │                    │
@@ -128,16 +123,17 @@ SPARK SAFETY ◄──proves── FORMATION ──uses──► AUTONOMY
      │                                          │
      ▼                                          ▼
 EXPORT CONTROL ──────────────────────────► zig API
-```
+....
 
-## Update Protocol
+=== Update Protocol
 
 This file is maintained by both humans and AI agents. When updating:
 
-1. **After completing a component**: Change its bar and percentage
-2. **After adding a component**: Add a new row in the appropriate section
-3. **After architectural changes**: Update the ASCII diagram
-4. **Date**: Update the `Last updated` comment at the top of this file
+[arabic]
+. *After completing a component*: Change its bar and percentage
+. *After adding a component*: Add a new row in the appropriate section
+. *After architectural changes*: Update the ASCII diagram
+. *Date*: Update the `+Last updated+` comment at the top of this file
 
-Progress bars use: `█` (filled) and `░` (empty), 10 characters wide.
-Percentages: 0%, 10%, 20%, ... 100% (in 10% increments).
+Progress bars use: `+█+` (filled) and `+░+` (empty), 10 characters wide.
+Percentages: 0%, 10%, 20%, … 100% (in 10% increments).
