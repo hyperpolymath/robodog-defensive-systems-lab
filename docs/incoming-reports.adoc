@@ -1,0 +1,58 @@
+= Incoming Research Reports
+:toc:
+
+This is the receiving surface for results from related repositories. Copy the compact hand-off from each project here, then verify every referenced theorem, test, file, and assumption locally before using it in Robodog design.
+
+== Intake rules
+
+. Preserve the submitting repository, revision, date, and exact status.
+. Separate formal proof, executable test, documentation, and speculation.
+. Do not upgrade a result when importing it.
+. Record counterexamples and retractions beside positive results.
+. Link the result to a Robodog issue or experiment.
+. A result is not an implementation requirement until its safety and scope review is complete.
+
+== Required report
+
+[source,yaml]
+----
+repository: hyperpolymath/example
+revision: "commit or tag"
+status: PROVEN | PARTIALLY PROVEN | NOT PROVEN | NOT APPLICABLE
+claim: "one precise claim"
+formal_objects:
+  - "definitions or types"
+proof_or_test_evidence:
+  - file: "path"
+    theorem_or_test: "name"
+    command: "command, if applicable"
+assumptions:
+  - "checker soundness"
+  - "fault/timing/physical model"
+limits:
+  - "what is not established"
+robodog_relevance: direct | indirect | speculative | none
+robodog_integration_proposal:
+  - "concrete type, invariant, test, or experiment"
+robodog_hand_off: "short summary"
+verification:
+  checked_by: "name or handle"
+  checked_on: "YYYY-MM-DD"
+  result: pending | accepted | rejected | needs clarification
+  robodog_issue: "link or identifier"
+----
+
+== Current intake queue
+
+No external research result has yet been accepted into the Robodog safety case. The visual comparator in link:bft-type-comparator.adoc[bft-type-comparator.adoc] is explanatory material, not evidence of a BFT or type-theoretic theorem.
+
+== Standing distinctions
+
+* BFT agreement is not physical truth.
+* Authentication is not correctness.
+* A proof term proves only its declared proposition under its assumptions.
+* An information residue does not recover information never received.
+* A choreography constrains protocol shape; it does not make a runtime honest.
+* A resource bound is not a safety proof.
+* Inverse metadata is not unconditional reversibility.
+* Rejection with no actuator effect is not necessarily total observational nullity.
