@@ -1,0 +1,40 @@
+= Mathematical Agenda
+
+== Highest-value proof ladder
+
+=== 1. Evidence refinement
+
+Define `e₁ ⊑ e₂` when `e₂` is at least as informative as `e₁`. Prove that valid refinement cannot introduce unsupported certainty. This is the common spine for epistemic, residual, and safety-state work.
+
+=== 2. Compatible worlds
+
+Represent an observation by the set of system worlds compatible with it. Prove monotonicity under genuine evidence refinement and exhibit a two-world counterexample where telemetry does not justify a unique action.
+
+=== 3. Agreement versus truth
+
+Keep separate predicates for `AgreesOn(replicas, digest)` and `TrueInWorld(world, claim)`. Document the additional sensor, environment, and model assumptions required to connect them.
+
+=== 4. Typed safety gate
+
+Make actuator admission depend on explicit evidence predicates, not a single trust flag. Test every transition with stale, degraded, conflicting, forged, and missing evidence.
+
+=== 5. Quantitative bounds
+
+Add latency, rounds, trust crossings, evidence-check cost, and recovery cost as separate grades. Prove composition and budget failure without treating a grade as a safety theorem.
+
+=== 6. Null-effect and trace properties
+
+For rejected or quarantined inputs, prove no protected actuator-state change, then enumerate allowed audit, timing, queue, cache, and metrics traces. This is a realistic route into noninterference.
+
+== Why this order
+
+The first four steps clarify semantics and safety before introducing more machinery. They are small enough to produce counterexamples quickly and strong enough to expose whether later Echo, tropical, choreography, residual-evidence, or epistemic claims genuinely apply.
+
+== Minimum artefacts per step
+
+* one definition;
+* one positive theorem or explicit counterexample;
+* one executable test;
+* one named assumption;
+* one statement of what remains unproved;
+* one Robodog integration note.

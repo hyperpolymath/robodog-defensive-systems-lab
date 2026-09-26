@@ -1,0 +1,69 @@
+= Robodog Defensive Systems Lab: Programme Plan
+:toc:
+
+== Mission
+
+Build a simulation-first, defensible safety case for resilient autonomous coordination. The project should make unsafe state transitions difficult to express, easy to reject, and auditable after the fact. It is not an operational ECM, surveillance, weapons, or field-deployment programme.
+
+== Programme questions
+
+. Can a component distinguish observation, inference, agreement, and physical truth?
+. Can degraded or conflicting telemetry cross a safety boundary without being silently upgraded?
+. Can safe-state decisions be checked across Rust, Idris2, SPARK, and FFI boundaries?
+. Can every claimed guarantee state its model, assumptions, evidence, and limits?
+. Can resource, latency, provenance, and recovery budgets fail loudly and locally?
+
+== Workstreams
+
+[cols="1,2,2,2",options="header"]
+|===
+| Workstream | Near-term deliverable | Mathematical question | Primary evidence
+
+| Safety state | Explicit evidence-state algebra and gate | Is admission monotone in valid evidence? | Rust tests + SPARK proof obligations
+| Proof boundary | Claim meanings, receipts, and transport records | What proposition is actually proved? | Idris2 types + checked examples
+| Residual evidence | Compatible-world model for ambiguous telemetry | Does added evidence reduce alternatives? | finite model + Agda hand-off
+| Information residue | Degradation/truncation witness | What loss is known, and what is unrecoverable? | Echo-style finite examples
+| Agreement | Small 3f+1 trace model | Do replicas agree under the declared fault model? | executable fault traces
+| Resource grades | Latency/round/boundary budget | Are worst-case bounds compositional? | benchmark + formal grade
+| Recovery | Evidence-backed rollback and audit states | What is required for reversal? | property tests and crash cases
+| Noninterference | Rejected/quarantined path | What state and trace effects remain? | SPARK/Absolute-Zero style model
+|===
+
+== Phase gates
+
+=== Gate 0: vocabulary and threat model
+
+Define crash, omission, equivocation, stale input, malicious input, compromised runtime, unsafe FFI, and physical-model error. No security claim may proceed without naming its fault model.
+
+=== Gate 1: executable baseline
+
+Implement explicit states: `Measured`, `Inferred`, `Verified`, `Stale`, `Degraded`, `Conflicting`, `Rejected`, and `UnknownProvenance`. Add positive, negative, and fault-injection tests.
+
+=== Gate 2: one cross-language invariant
+
+Select and state one invariant:
+
+[source]
+----
+unsafe actuator command => no valid evidence path exists
+----
+
+Map the invariant across Rust, Idris2, SPARK, and the FFI. Record which layer proves which part.
+
+=== Gate 3: mathematical extensions
+
+Only after Gate 2, add residual-world ordering, Echo residues, tropical grades, choreography, reversibility, or non-disclosure. Each extension needs definitions, a theorem or counterexample, an executable test, and a Robodog adapter note.
+
+=== Gate 4: integrated safety case
+
+Produce a traceable argument from input to decision to safe-state outcome, including degraded communication, contradictory evidence, timeout, crash, and recovery.
+
+== Definition of done for a research claim
+
+A claim is `PROVEN` only when a formal checker or complete stated argument establishes it under named assumptions. `PARTIALLY PROVEN` means some lemmas or cases are established. `NOT PROVEN` is a valid result when a counterexample or missing assumption is identified. “Implemented”, “tested”, and “plausible” are not synonyms for proven.
+
+Every imported result must be recorded in link:incoming-reports.adoc[incoming-reports.adoc].
+
+== Safety and publication boundary
+
+All experiments remain synthetic, defensive, and non-operational. No real RF captures, field deployment guidance, target tracking, intrusion, jamming, or offensive autonomy should be added. See link:../DEFENSIVE-USE.adoc[DEFENSIVE-USE.adoc] and link:../EXPORT-CONTROL.adoc[EXPORT-CONTROL.adoc].
