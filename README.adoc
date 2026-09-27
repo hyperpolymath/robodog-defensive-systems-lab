@@ -96,6 +96,8 @@ The repository is organised around a simulation-first safety boundary:
 
 See link:TOPOLOGY.md[TOPOLOGY.md] for the architecture map and completion dashboard.
 
+The research programme is documented in link:docs/programme-plan.adoc[docs/programme-plan.adoc]. Mathematical extensions and their proof ladder are tracked in link:docs/mathematical-agenda.adoc[docs/mathematical-agenda.adoc]. External reports are received through link:docs/incoming-reports.adoc[docs/incoming-reports.adoc]. The educational BFT/type comparator is described in link:docs/bft-type-comparator.adoc[docs/bft-type-comparator.adoc].
+
 == Technology Stack
 
 [cols="1,2,2"]

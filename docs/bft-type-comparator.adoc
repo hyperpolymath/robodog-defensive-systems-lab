@@ -1,0 +1,32 @@
+= BFT and Type-Augmented Design Comparator
+:toc:
+
+== Purpose
+
+`www/index.html` is an educational visualisation prompted by a comparison between Byzantine Fault Tolerance (BFT) and ideas associated with epistemic types, proof transport, echo types, choreographies, and tropical grading.
+
+It is deliberately a *comparator*, not a claim of equivalence. BFT and typed evidence answer different questions:
+
+* BFT: can non-faulty replicas agree despite a specified class of faults, network model, and quorum assumptions?
+* Typed evidence: which states can a component accept, and what machine-checkable evidence accompanies them?
+
+A signature authenticates origin; it does not authenticate truth. A proof term proves only the proposition actually formalised, under the soundness assumptions of its checker, axioms, specifications, and data sources. Typed boundaries therefore complement BFT; they do not remove quorum intersection, liveness, membership, recovery, or a threat model.
+
+== What is grounded here
+
+The repository contains Idris2 ABI declarations, Rust ECM code and tests, and SPARK safety modules. The immediately actionable synthesis is evidence-aware safety boundaries: distinguish measured, inferred, stale, degraded, and rejected inputs, and make unsafe actuator commands unrepresentable or rejected.
+
+The names `epistemic-types`, `echo-types`, `choreographic`, `tropical`, `residual evidence`, `Januskey`, and `Absolute Zero` should be treated as proposed research modules until their repositories expose formal definitions, semantics, soundness claims, and executable tests. The visualisation labels their useful hypotheses without presenting them as established results.
+
+== Suggested progression
+
+. State faults explicitly: crash, omission, equivocation, stale data, malicious sensor, compromised runtime, and unsafe FFI.
+. Define one invariant, for example: `unsafe actuator command => no valid evidence path`.
+. Build a minimal 3f+1 trace and a typed admission trace, including counterexamples.
+. Prove/check the boundary with Idris2, Rust, and SPARK where appropriate.
+. Measure latency, memory, proof-check cost, false rejection, and recovery behaviour.
+. Add named extensions only when each has an operational semantics and a testable contract.
+
+== Limitations
+
+Echo-like witnesses can preserve structured provenance of loss but cannot recover information never received. A choreography can constrain protocol shape but cannot make a compromised runtime honest. Quantitative path costs can make budgets explicit but do not themselves establish safety. These distinctions are the central teaching point.
